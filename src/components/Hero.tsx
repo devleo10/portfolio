@@ -1,13 +1,39 @@
 "use client"
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, FileText } from 'lucide-react';
+
+const names = ["DEVLEO", "MEHBUB"];
+const ANIMATION_SPEED = 0.32; // seconds per letter (slower)
+const HOLD_TIME = 1.7; // seconds to hold full name before erasing (slower)
 
 const Hero: React.FC = () => {
-  const scrollToSection = (sectionId: string) => {
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
-  };
+
+
+  const [nameIndex, setNameIndex] = useState(0);
+  const [displayed, setDisplayed] = useState(0); // how many letters shown
+  const [direction, setDirection] = useState<'in' | 'out'>('in');
+
+  useEffect(() => {
+    let timeout: NodeJS.Timeout;
+    if (direction === 'in') {
+      if (displayed < names[nameIndex].length) {
+        timeout = setTimeout(() => setDisplayed(prev => prev + 1), ANIMATION_SPEED * 1000);
+      } else {
+        timeout = setTimeout(() => setDirection('out'), HOLD_TIME * 1000);
+      }
+    } else {
+      if (displayed > 0) {
+        timeout = setTimeout(() => setDisplayed(prev => prev - 1), ANIMATION_SPEED * 1000);
+      } else {
+        timeout = setTimeout(() => {
+          setNameIndex(prev => (prev + 1) % names.length);
+          setDirection('in');
+        }, 600);
+      }
+    }
+    return () => clearTimeout(timeout);
+  }, [displayed, direction, nameIndex]);
 
   return (
     <div className="min-h-screen w-full bg-black relative overflow-hidden">
@@ -221,14 +247,25 @@ const Hero: React.FC = () => {
             transition={{ duration: 1, ease: 'easeOut' }}
           >
             <h1 className="text-6xl sm:text-7xl lg:text-9xl font-pixel font-normal text-white mb-6 leading-none tracking-tight">
-              <motion.span 
-                className="inline-block"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              >
-                DEVLEO
-              </motion.span>
+              <span className="inline-block">
+                {names[nameIndex].split('').map((char, i) => (
+                  <motion.span
+                    key={`${nameIndex}-${i}`}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ 
+                      opacity: i < displayed ? 1 : 0, 
+                      y: i < displayed ? 0 : 30 
+                    }}
+                    transition={{ 
+                      duration: 0.3,
+                      ease: "easeOut"
+                    }}
+                    className="inline-block"
+                  >
+                    {char}
+                  </motion.span>
+                ))}
+              </span>
             </h1>
           </motion.div>
           <motion.div
@@ -237,7 +274,7 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.5 }}
           >
             <p className="text-2xl sm:text-3xl text-white/80 mb-10 font-light tracking-wide">
-              Full-Stack Engineer & Digital Architect
+              FullStack Developer & a Weirdo
             </p>
           </motion.div>
           <motion.div
@@ -246,7 +283,7 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.65 }}
           >
             <p className="text-lg text-white/60 mb-12 max-w-3xl mx-auto leading-relaxed">
-              Crafting clean, performant web experiences with precision engineering and minimalist aesthetics.
+            I love what I do, I do what I love. Breaking and building things for fun.
             </p>
           </motion.div>
           <motion.div
@@ -255,20 +292,22 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.8 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
           >
-            <motion.button 
+            <motion.a
+              href="mailto:mehbubwork@gmail.com"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="group relative overflow-hidden bg-white text-black px-8 py-4 rounded-xl font-semibold tracking-wide transition-all duration-300 shadow-[0_0_0_1px_rgba(255,255,255,0.15)] hover:shadow-[0_0_0_1px_rgba(255,255,255,0.35)]"
             >
               <span className="relative z-10 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-black/70" />
-                View Work
+                Contact Me
               </span>
               <div className="absolute inset-0 bg-gradient-to-b from-white to-white/80 opacity-0 group-hover:opacity-100 transition-opacity" />
-            </motion.button>
+            </motion.a>
             <motion.a
-              href="/resume.pdf"
+              href="https://drive.google.com/file/d/1IoCJwRyoxIKsFKJCI0mSmrtz6KJNMmPN/view?usp=drive_link"
               target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 rounded-xl font-semibold tracking-wide border border-white/25 text-white/80 hover:text-white hover:border-white/60 transition-colors"
