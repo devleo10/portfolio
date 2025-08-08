@@ -5,9 +5,15 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 module.exports = {
   content: [
     './src/**/*.{js,jsx,ts,tsx}',
+    './index.html'
   ],
   theme: {
-    extend: {}
+    extend: {
+      fontFamily: {
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        pixel: ['"Nothing5x7"', ...defaultTheme.fontFamily.sans],
+      }
+    }
   },
   plugins: [],
 };

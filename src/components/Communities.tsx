@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Users, Calendar, MapPin, Star, Award } from 'lucide-react';
+import { Users, Calendar, Star, Award } from 'lucide-react';
 
 const Communities: React.FC = () => {
   const communities = [
@@ -10,8 +10,7 @@ const Communities: React.FC = () => {
       period: '2022 - Present',
       description: 'Leading cloud-native technology adoption in the local developer community through meetups, workshops, and hands-on sessions.',
       achievements: ['Organized 15+ meetups', '500+ community members', 'Speaker at KubeCon'],
-      logo: 'https://img-wrapper.vercel.app/image?url=https://placehold.co/80x80/0f172a/60a5fa?text=CNCF',
-      color: 'from-blue-500 to-cyan-500',
+      logo: 'https://img-wrapper.vercel.app/image?url=https://placehold.co/80x80/111/fff?text=C',
       members: '500+',
       events: 15
     },
@@ -21,8 +20,7 @@ const Communities: React.FC = () => {
       period: '2022 - 2023',
       description: 'Global hackathon community fostering innovation and collaboration among developers worldwide.',
       achievements: ['3 Global Hackathons', '1000+ participants', 'Mentored 50+ teams'],
-      logo: 'https://img-wrapper.vercel.app/image?url=https://placehold.co/80x80/0f172a/8b5cf6?text=FH',
-      color: 'from-purple-500 to-pink-500',
+      logo: 'https://img-wrapper.vercel.app/image?url=https://placehold.co/80x80/111/fff?text=F',
       members: '1000+',
       events: 3
     },
@@ -32,8 +30,7 @@ const Communities: React.FC = () => {
       period: '2021 - 2022',
       description: 'Institution of Engineers (India) Computer Society chapter focused on bridging academia and industry.',
       achievements: ['20+ Technical workshops', 'Industry partnerships', 'Student placement program'],
-      logo: 'https://img-wrapper.vercel.app/image?url=https://placehold.co/80x80/0f172a/10b981?text=IEI',
-      color: 'from-green-500 to-emerald-500',
+      logo: 'https://img-wrapper.vercel.app/image?url=https://placehold.co/80x80/111/fff?text=I',
       members: '200+',
       events: 20
     },
@@ -43,120 +40,116 @@ const Communities: React.FC = () => {
       period: '2020 - Present',
       description: 'Building and nurturing local developer communities across multiple platforms and technologies.',
       achievements: ['Multiple community chapters', 'Cross-platform events', 'Mentorship programs'],
-      logo: 'https://img-wrapper.vercel.app/image?url=https://placehold.co/80x80/0f172a/f59e0b?text=DC',
-      color: 'from-orange-500 to-red-500',
+      logo: 'https://img-wrapper.vercel.app/image?url=https://placehold.co/80x80/111/fff?text=D',
       members: '800+',
       events: 25
     }
   ];
 
   return (
-    <section className="py-20 bg-black" id="communities">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-32 bg-black relative overflow-hidden" id="communities">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(255,255,255,0.05),transparent_70%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(255,255,255,0.03),transparent_65%)]" />
+      </div>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-            Community <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Involvement</span>
+          <h2 className="text-5xl sm:text-6xl font-bold text-white mb-6 tracking-tight">
+            Community <span className="text-transparent bg-clip-text bg-[linear-gradient(to_bottom,white,white_55%,rgba(255,255,255,0.25))]">Involvement</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto mb-8" />
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Actively contributing to the growth and development of tech communities worldwide
+          <div className="w-28 h-px bg-white/30 mx-auto mb-8" />
+          <p className="text-lg text-white/55 max-w-3xl mx-auto leading-relaxed">
+            Actively contributing to the growth and development of tech communities worldwide.
           </p>
         </motion.div>
-
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-8">
           {communities.map((community, index) => (
             <motion.div
               key={community.name}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.02 }}
-              className="bg-gray-900 rounded-2xl p-6 border border-gray-700 hover:border-gray-600 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/10"
+              whileHover={{ y: -4 }}
+              className="group bg-white/[0.035] rounded-2xl p-7 border border-white/10 hover:border-white/25 transition-all duration-500 backdrop-blur-sm shadow-[0_0_0_1px_rgba(255,255,255,0.05)]"
             >
-              <div className="flex items-center gap-4 mb-6">
-                <div className={`w-16 h-16 rounded-xl bg-gradient-to-r ${community.color} flex items-center justify-center overflow-hidden`}>
-                  <img 
-                    src={community.logo} 
-                    alt={community.name}
-                    className="w-full h-full object-cover rounded-xl"
-                  />
+              <div className="flex items-center gap-5 mb-6">
+                <div className="w-16 h-16 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden">
+                  <img src={community.logo} alt={community.name} className="w-full h-full object-cover rounded-xl grayscale opacity-70" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white">{community.name}</h3>
-                  <p className="text-gray-400">{community.role}</p>
+                  <h3 className="text-xl font-semibold text-white tracking-tight">{community.name}</h3>
+                  <p className="text-white/45 text-sm tracking-wide">{community.role}</p>
                 </div>
               </div>
-
-              <div className="flex items-center gap-4 text-sm text-gray-400 mb-4">
+              <div className="flex items-center gap-4 text-xs text-white/45 mb-5 uppercase tracking-wider">
                 <div className="flex items-center gap-1">
-                  <Calendar className="w-4 h-4" />
+                  <Calendar className="w-3.5 h-3.5" />
                   {community.period}
                 </div>
               </div>
-
-              <p className="text-gray-300 mb-6 leading-relaxed">{community.description}</p>
-
+              <p className="text-white/60 mb-6 leading-relaxed text-sm">
+                {community.description}
+              </p>
               <div className="grid grid-cols-2 gap-4 mb-6">
-                <div className="bg-gray-800 rounded-lg p-3 text-center border border-gray-700">
-                  <div className="flex items-center justify-center gap-1 text-blue-400 mb-1">
+                <div className="rounded-lg p-3 text-center bg-white/[0.04] border border-white/10">
+                  <div className="flex items-center justify-center gap-1 text-white/55 mb-1">
                     <Users className="w-4 h-4" />
                   </div>
-                  <div className="text-lg font-bold text-white">{community.members}</div>
-                  <div className="text-xs text-gray-400">Members</div>
+                  <div className="text-lg font-medium text-white tracking-tight">{community.members}</div>
+                  <div className="text-[10px] text-white/40 uppercase tracking-wider">Members</div>
                 </div>
-                <div className="bg-gray-800 rounded-lg p-3 text-center border border-gray-700">
-                  <div className="flex items-center justify-center gap-1 text-purple-400 mb-1">
+                <div className="rounded-lg p-3 text-center bg-white/[0.04] border border-white/10">
+                  <div className="flex items-center justify-center gap-1 text-white/55 mb-1">
                     <Calendar className="w-4 h-4" />
                   </div>
-                  <div className="text-lg font-bold text-white">{community.events}</div>
-                  <div className="text-xs text-gray-400">Events</div>
+                  <div className="text-lg font-medium text-white tracking-tight">{community.events}</div>
+                  <div className="text-[10px] text-white/40 uppercase tracking-wider">Events</div>
                 </div>
               </div>
-
-              <div className="space-y-2">
-                <h4 className="text-white font-semibold mb-3 flex items-center gap-2">
-                  <Award className="w-4 h-4 text-yellow-400" />
-                  Key Achievements
+              <div>
+                <h4 className="text-white/80 font-medium mb-3 flex items-center gap-2 tracking-wide text-sm uppercase">
+                  <Award className="w-4 h-4 text-white/60" /> Achievements
                 </h4>
-                {community.achievements.map((achievement, i) => (
-                  <div key={i} className="flex items-center gap-2">
-                    <Star className="w-3 h-3 text-yellow-400 flex-shrink-0" />
-                    <span className="text-gray-300 text-sm">{achievement}</span>
-                  </div>
-                ))}
+                <div className="space-y-2">
+                  {community.achievements.map((achievement, i) => (
+                    <div key={i} className="flex items-start gap-2 text-white/55 text-sm">
+                      <Star className="w-3.5 h-3.5 text-white/40 mt-0.5" />
+                      <span className="leading-snug">{achievement}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
-
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
-          className="mt-16 text-center"
+          className="mt-20 text-center"
         >
-          <div className="bg-gray-900 rounded-2xl p-8 border border-gray-700">
-            <h3 className="text-2xl font-bold text-white mb-4">Community Impact</h3>
-            <div className="grid md:grid-cols-3 gap-6 text-center">
+          <div className="bg-white/[0.035] rounded-2xl p-10 border border-white/10 backdrop-blur-sm">
+            <h3 className="text-2xl font-semibold text-white mb-8 tracking-tight">Community Impact</h3>
+            <div className="grid md:grid-cols-3 gap-10">
               <div>
-                <div className="text-3xl font-bold text-blue-400 mb-2">2500+</div>
-                <div className="text-gray-300">Developers Reached</div>
+                <div className="text-3xl font-medium text-white mb-2 tracking-tight">2500+</div>
+                <div className="text-white/45 text-xs uppercase tracking-wider">Developers Reached</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-purple-400 mb-2">60+</div>
-                <div className="text-gray-300">Events Organized</div>
+                <div className="text-3xl font-medium text-white mb-2 tracking-tight">60+</div>
+                <div className="text-white/45 text-xs uppercase tracking-wider">Events Organized</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-green-400 mb-2">150+</div>
-                <div className="text-gray-300">Mentees Guided</div>
+                <div className="text-3xl font-medium text-white mb-2 tracking-tight">150+</div>
+                <div className="text-white/45 text-xs uppercase tracking-wider">Mentees Guided</div>
               </div>
             </div>
           </div>

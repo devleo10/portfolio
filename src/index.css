@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Nothing5x7 pixel font */
+@font-face {
+  font-family: 'Nothing5x7';
+  src: url('/fonts/nothing-font-5x7.otf.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-pixel { font-family: 'Nothing5x7', theme('fontFamily.sans'); }
+
+body { @apply font-sans; }

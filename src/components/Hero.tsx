@@ -11,36 +11,34 @@ const Hero: React.FC = () => {
 
   return (
     <div className="min-h-screen w-full bg-black relative overflow-hidden">
-      {/* Midnight Mist Effect */}
+      {/* Subtle monochrome atmospheric mist */}
       <div
         className="absolute inset-0 z-0"
         style={{
           backgroundImage: `
-            radial-gradient(circle at 50% 100%, rgba(70, 85, 110, 0.5) 0%, transparent 60%),
-            radial-gradient(circle at 50% 100%, rgba(99, 102, 241, 0.4) 0%, transparent 70%),
-            radial-gradient(circle at 50% 100%, rgba(181, 184, 208, 0.3) 0%, transparent 80%)
+            radial-gradient(circle at 50% 100%, rgba(255,255,255,0.10) 0%, transparent 60%),
+            radial-gradient(circle at 30% 0%, rgba(255,255,255,0.05) 0%, transparent 70%),
+            radial-gradient(circle at 80% 40%, rgba(255,255,255,0.06) 0%, transparent 75%)
           `,
         }}
       />
-      
-      {/* Enhanced atmospheric layers */}
+      {/* Neutral soft layers */}
       <div 
         className="absolute inset-0 z-0"
         style={{
           background: `
-            radial-gradient(ellipse 140% 100% at 50% 0%, rgba(59, 130, 246, 0.15), transparent 50%),
-            radial-gradient(ellipse 120% 80% at 80% 20%, rgba(139, 92, 246, 0.1), transparent 50%),
-            radial-gradient(ellipse 100% 60% at 20% 40%, rgba(16, 185, 129, 0.08), transparent 50%)
+            radial-gradient(ellipse 140% 100% at 50% 0%, rgba(255,255,255,0.08), transparent 55%),
+            radial-gradient(ellipse 120% 80% at 80% 20%, rgba(255,255,255,0.05), transparent 55%),
+            radial-gradient(ellipse 100% 60% at 20% 40%, rgba(255,255,255,0.04), transparent 55%)
           `
         }}
       />
-      
-      {/* Animated floating particles */}
+      {/* Floating particles (white) */}
       <div className="absolute inset-0 z-0">
         {[...Array(6)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-blue-400 rounded-full opacity-20"
+            className="absolute w-1 h-1 bg-white rounded-full opacity-20"
             initial={{
               x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
               y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000)
@@ -57,8 +55,7 @@ const Hero: React.FC = () => {
           />
         ))}
       </div>
-      
-      {/* Perfect Curved Glow Effect - Matching the reference exactly */}
+      {/* Curved glow simplified to white tints */}
       <div className="absolute bottom-0 left-0 right-0 h-48 z-0">
         <svg 
           className="absolute bottom-0 w-full h-full"
@@ -197,126 +194,87 @@ const Hero: React.FC = () => {
         <div 
           className="absolute bottom-0 left-0 right-0 h-32"
           style={{
-            background: `
-              radial-gradient(ellipse 300% 100% at 50% 100%, 
-                rgba(255, 255, 255, 0.08) 0%, 
-                rgba(255, 255, 255, 0.04) 40%, 
-                rgba(255, 255, 255, 0.02) 70%, 
-                transparent 100%
-              )
-            `,
-            filter: 'blur(20px)'
+            background: `radial-gradient(ellipse 300% 100% at 50% 100%, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.05) 40%, rgba(255,255,255,0.02) 70%, transparent 100%)`,
+            filter: 'blur(18px)'
           }}
         />
-        
-        {/* Peak glow enhancement */}
         <div 
-          className="absolute bottom-12 left-1/2 transform -translate-x-1/2 w-[800px] h-16"
+          className="absolute bottom-12 left-1/2 transform -translate-x-1/2 w-[700px] h-16"
           style={{
-            background: `
-              radial-gradient(ellipse 100% 100% at 50% 100%, 
-                rgba(255, 255, 255, 0.15) 0%, 
-                rgba(255, 255, 255, 0.08) 50%, 
-                transparent 100%
-              )
-            `,
-            filter: 'blur(30px)'
+            background: `radial-gradient(ellipse 100% 100% at 50% 100%, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.08) 60%, transparent 100%)`,
+            filter: 'blur(28px)'
           }}
         />
-        
-        {/* Sharp peak highlight */}
         <div 
-          className="absolute bottom-14 left-1/2 transform -translate-x-1/2 w-[400px] h-8"
+          className="absolute bottom-14 left-1/2 transform -translate-x-1/2 w-[360px] h-8"
           style={{
-            background: `
-              radial-gradient(ellipse 80% 100% at 50% 100%, 
-                rgba(255, 255, 255, 0.25) 0%, 
-                rgba(255, 255, 255, 0.12) 60%, 
-                transparent 100%
-              )
-            `,
-            filter: 'blur(15px)'
+            background: `radial-gradient(ellipse 80% 100% at 50% 100%, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.12) 60%, transparent 100%)`,
+            filter: 'blur(14px)'
           }}
         />
       </div>
-      
       <div className="relative z-10 min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
+            transition={{ duration: 1, ease: 'easeOut' }}
           >
-            <h1 className="text-6xl sm:text-7xl lg:text-9xl font-extrabold text-white mb-6 leading-tight">
+            <h1 className="text-6xl sm:text-7xl lg:text-9xl font-pixel font-normal text-white mb-6 leading-none tracking-tight">
               <motion.span 
-                className="inline-block bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent"
+                className="inline-block"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                devLeo
+                DEVLEO
               </motion.span>
             </h1>
           </motion.div>
-          
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
           >
-            <p className="text-2xl sm:text-3xl text-gray-300 mb-12 font-light">
+            <p className="text-2xl sm:text-3xl text-white/80 mb-10 font-light tracking-wide">
               Full-Stack Engineer & Digital Architect
             </p>
           </motion.div>
-          
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.65 }}
+          >
+            <p className="text-lg text-white/60 mb-12 max-w-3xl mx-auto leading-relaxed">
+              Crafting clean, performant web experiences with precision engineering and minimalist aesthetics.
+            </p>
+          </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-          >
-            <p className="text-lg text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
-              Crafting elegant, high-performance web applications with a passion for clean code and user-centric design.
-            </p>
-          </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.0 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
           >
             <motion.button 
-              onClick={() => scrollToSection('projects')}
-              whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)" }}
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="group relative overflow-hidden bg-gradient-to-r from-blue-600 via-blue-700 to-purple-700 text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300 shadow-lg shadow-blue-500/25"
+              className="group relative overflow-hidden bg-white text-black px-8 py-4 rounded-xl font-semibold tracking-wide transition-all duration-300 shadow-[0_0_0_1px_rgba(255,255,255,0.15)] hover:shadow-[0_0_0_1px_rgba(255,255,255,0.35)]"
             >
               <span className="relative z-10 flex items-center gap-2">
-                <ExternalLink className="w-5 h-5" />
-                Explore My Work
+                <span className="w-2 h-2 rounded-full bg-black/70" />
+                View Work
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-b from-white to-white/80 opacity-0 group-hover:opacity-100 transition-opacity" />
             </motion.button>
-            
             <motion.a
               href="/resume.pdf"
               target="_blank"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="border-2 border-gray-600 text-gray-300 px-8 py-4 rounded-2xl font-semibold transition-all duration-300 hover:border-blue-400 hover:text-blue-400 hover:shadow-lg hover:shadow-blue-500/20 flex items-center gap-2 backdrop-blur-sm"
+              className="px-8 py-4 rounded-xl font-semibold tracking-wide border border-white/25 text-white/80 hover:text-white hover:border-white/60 transition-colors"
             >
-              <FileText className="w-5 h-5" />
               Resume
             </motion.a>
-          </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1.6 }}
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          >
-         
           </motion.div>
         </div>
       </div>
