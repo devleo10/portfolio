@@ -1,7 +1,14 @@
-import Hero from './components/Hero';
+import { Hero, AboutSection, WorkSection, ContactSection } from './components';
 
 function App() {
-  return <Hero />;
+  return (
+    <div className="min-h-screen bg-black">
+      <Hero />
+      <AboutSection />
+      <WorkSection />
+      <ContactSection />
+    </div>
+  );
 }
 
 export default App;
