@@ -12,18 +12,46 @@ type Project = {
 
 const projects: Project[] = [
   {
-    title: "Clinkr — Link Analytics",
-    description:
-      "React + Supabase platform for tracking device, browser and geographical data with real-time updates. One-click auth and ultra-fast edge responses.",
-    tech: ["React", "Supabase", "Edge Functions", "Vite"],
-    url: "https://clinkr.live",
-  },
-  {
     title: "Cluefund — Mutual Fund Tracker",
     description:
       "Full-stack investment tracking platform with real-time portfolio analytics, performance metrics, and market insights.",
     tech: ["Next.js", "Node.js", "MongoDB", "Chart.js"],
     url: "#",
+  },
+  {
+    title: "Go Doc Parser",
+    description:
+      "A Go utility to parse and process documentation files, making it easier to extract and analyze structured information from codebases.",
+    tech: ["Go"],
+    url: "https://github.com/devleo10/go-doc-parser",
+  },
+  {
+    title: "Hirebot — Autofill Chrome Extension",
+    description:
+      "A Chrome extension that helps you save and autofill Q/A and input fields for job and internship applications, streamlining repetitive form-filling tasks.",
+    tech: ["JavaScript", "Chrome Extension"],
+    url: "https://github.com/devleo10/hirebot",
+  },
+  {
+    title: "pyScraper",
+    description:
+      "A Python-based web scraping utility for extracting, processing, and analyzing data from websites. Designed for flexibility and quick data collection.",
+    tech: ["Python"],
+    url: "https://github.com/devleo10/pyScraper",
+  },
+  {
+    title: "fcuk-funds — VFIAX Mutual Fund PDF Report Generator",
+    description:
+      "Generates a multi-page PDF report for the Vanguard 500 Index Fund (VFIAX) using Python. Fetches fund info and historical NAV data with yfinance, creates a summary, table of recent NAVs, and a trend plot for the last month. Easily customizable for other funds.",
+    tech: ["Python", "yfinance", "pandas", "matplotlib"],
+    url: "https://github.com/devleo10/fcuk-funds",
+  },
+  {
+    title: "Whooshh",
+    description:
+      "A JavaScript project (see repo for details).",
+    tech: ["JavaScript"],
+    url: "https://github.com/devleo10/Whooshh",
   },
 ];
 

@@ -28,15 +28,52 @@ const WorkSection: React.FC = () => {
   const projects: Project[] = [
     {
       title: "Clinkr — Link Analytics",
-      description: "React + Supabase platform for tracking device, browser and geographical data with real-time updates. One-click auth and ultra-fast edge responses.",
+      description:
+        "React + Supabase platform for tracking device, browser and geographical data with real-time updates. One-click auth and ultra-fast edge responses.",
       tech: ["React", "Supabase", "Edge Functions", "Vite"],
       url: "https://clinkr.live",
     },
     {
       title: "Cluefund — Mutual Fund Tracker",
-      description: "Full-stack investment tracking platform with real-time portfolio analytics, performance metrics, and market insights.",
+      description:
+        "Full-stack investment tracking platform with real-time portfolio analytics, performance metrics, and market insights.",
       tech: ["Next.js", "Node.js", "MongoDB", "Chart.js"],
       url: "#",
+    },
+    {
+      title: "Go Doc Parser",
+      description:
+        "A Go utility to parse and process documentation files, making it easier to extract and analyze structured information from codebases.",
+      tech: ["Go"],
+      url: "https://github.com/devleo10/go-doc-parser",
+    },
+    {
+      title: "Hirebot — Autofill Chrome Extension",
+      description:
+        "A Chrome extension that helps you save and autofill Q/A and input fields for job and internship applications, streamlining repetitive form-filling tasks.",
+      tech: ["JavaScript", "Chrome Extension"],
+      url: "https://github.com/devleo10/hirebot",
+    },
+    {
+      title: "pyScraper",
+      description:
+        "A Python-based web scraping utility for extracting, processing, and analyzing data from websites. Designed for flexibility and quick data collection.",
+      tech: ["Python"],
+      url: "https://github.com/devleo10/pyScraper",
+    },
+    {
+      title: "fcuk-funds — VFIAX Mutual Fund PDF Report Generator",
+      description:
+        "Generates a multi-page PDF report for the Vanguard 500 Index Fund (VFIAX) using Python. Fetches fund info and historical NAV data with yfinance, creates a summary, table of recent NAVs, and a trend plot for the last month. Easily customizable for other funds.",
+      tech: ["Python", "yfinance", "pandas", "matplotlib"],
+      url: "https://github.com/devleo10/fcuk-funds",
+    },
+    {
+      title: "Whooshh",
+      description:
+        "A sleek, responsive weather app built with HTML, CSS, and JavaScript. Whooshh delivers real-time weather updates for any city worldwide, featuring a modern UI, live temperature, humidity, wind speed, and mobile-friendly design. Powered by OpenWeatherMap and Unsplash APIs.",
+      tech: ["JavaScript", "HTML", "CSS", "OpenWeatherMap API", "Unsplash API"],
+      url: "https://github.com/devleo10/Whooshh",
     },
   ];
 
@@ -45,19 +82,19 @@ const WorkSection: React.FC = () => {
       role: "Full-Stack Developer Intern",
       company: "House of EdTech",
       period: "July 2025 – Present",
-      description: "Building a scalable mutual fund investment platform; architecting backend in Go and frontend in Next.js + TypeScript. Integrating AI chatbots and real-time features.",
-      achievements: [
-        "Architected microservices-ready backend",
-        "Built production-ready frontend UI components",
-        "Integrated LangChain-based chatbot features",
-      ],
+      description: "Building a scalable, high-traffic mutual fund investment platform from scratch. Architecting robust backend systems in Go, building sleek production-ready frontends with Next.js and TypeScript, and integrating AI-driven chatbots using LangChain and LLMs for personalized financial assistance.",
     },
     {
-      role: "Project Maintainer — Apertre 2.0",
-      company: "Open Source Program",
-      period: "Feb 2024 – Apr 2024",
-      description: "Maintained multiple repos, reviewed PRs and improved developer workflows across projects.",
-      achievements: ["Improved drag-and-drop UX", "Added chart export feature"],
+      role: "Project Maintainer",
+      company: "Apertre 2.0 (Open Source Program)",
+      period: "Feb 2024 – April 2024",
+      description: "Maintained and reviewed PRs across two major projects. Collaborated with multiple contributors to ensure seamless integrations, enhanced code quality, and oversaw consistent delivery through rigorous code reviews.",
+    },
+    {
+      role: "Core Team Member",
+      company: "Cloud Native Hooghly",
+      period: "Aug 2023 – Present",
+      description: "Organized technical workshops, mentored peers, and actively contributed to fostering community engagement and knowledge-sharing in cloud-native technologies."
     },
   ];
 
@@ -246,29 +283,6 @@ const WorkSection: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* How I Approach Projects */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="bg-white/[0.015] p-8 rounded-2xl border border-white/10"
-        >
-          <h3 className="text-2xl font-semibold text-white mb-8 text-center">How I Approach Projects</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {steps.map((item, index) => (
-              <div key={item.step} className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-white/[0.05] border border-white/15 flex items-center justify-center">
-                  <span className="text-xs font-medium text-white/70">{index + 1}</span>
-                </div>
-                <div>
-                  <h4 className="text-sm font-medium text-white">{item.step}</h4>
-                  <p className="text-xs text-white/50">{item.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );
