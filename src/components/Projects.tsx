@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
+import { techIconMap } from './techIconMap';
 
 type Project = {
   title: string;
@@ -94,14 +95,18 @@ const Projects: React.FC = () => {
                 </p>
                 
                 <div className="flex flex-wrap gap-2">
-                  {project.tech.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 rounded-full text-xs bg-white/[0.05] text-white/60 border border-white/10 tracking-wide"
-                    >
-                      {tech}
-                    </span>
-                  ))}
+                  {project.tech.map((tech) => {
+                    const Icon = techIconMap[tech];
+                    return (
+                      <span
+                        key={tech}
+                        className="flex items-center gap-1 px-3 py-1 rounded-full text-xs bg-white/[0.05] text-white/60 border border-white/10 tracking-wide"
+                      >
+                        {Icon && <Icon className="w-4 h-4 mr-1 text-white/70" />}
+                        {tech}
+                      </span>
+                    );
+                  })}
                 </div>
               </div>
             </motion.article>

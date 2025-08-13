@@ -11,23 +11,42 @@ const ContactSection: React.FC = () => {
     async function fetchLatestCommit() {
       setLoading(true);
       try {
-        const res = await fetch('https://api.github.com/users/devleo10/events/public');
-        if (!res.ok) throw new Error(`GitHub API returned ${res.status}`);
-        const events = await res.json();
+        // First, get all public repositories
+        const reposRes = await fetch('https://api.github.com/users/devleo10/repos?type=public&sort=updated&per_page=10');
+        if (!reposRes.ok) throw new Error(`GitHub API returned ${reposRes.status}`);
+        const repos = await reposRes.json();
 
-        const pushEvent = (events || []).find((ev: any) => 
-          ev.type === "PushEvent" && ev.payload?.commits?.length
-        );
-        
-        if (pushEvent) {
-          const commits = pushEvent.payload.commits;
-          const latest = commits[commits.length - 1];
-          setCommitMsg(latest.message || null);
-          setRepoName(pushEvent.repo?.name || null);
-        } else {
-          setCommitMsg(null);
+        let latestCommit = null;
+        let latestDate = new Date(0); // epoch
+        let latestRepoName = null;
+
+        // Check latest commit from each repo
+        for (const repo of repos.slice(0, 5)) { // Check top 5 recently updated repos
+          try {
+            const commitsRes = await fetch(`https://api.github.com/repos/${repo.full_name}/commits?per_page=1`);
+            if (commitsRes.ok) {
+              const commits = await commitsRes.json();
+              if (commits.length > 0) {
+                const commit = commits[0];
+                const commitDate = new Date(commit.commit.author.date);
+                
+                if (commitDate > latestDate) {
+                  latestDate = commitDate;
+                  latestCommit = commit.commit.message;
+                  latestRepoName = repo.name;
+                }
+              }
+            }
+          } catch (err) {
+            // Skip this repo if there's an error
+            console.warn(`Failed to fetch commits for ${repo.name}`);
+          }
         }
+
+        setCommitMsg(latestCommit);
+        setRepoName(latestRepoName);
       } catch (err) {
+        console.error('Error fetching latest commit:', err);
         setCommitMsg(null);
       } finally {
         setLoading(false);

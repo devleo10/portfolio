@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Calendar, MapPin, Award, ArrowRight } from 'lucide-react';
+import { techIconMap } from './techIconMap';
 
 type Project = {
   title: string;
@@ -154,14 +155,18 @@ const WorkSection: React.FC = () => {
                 </div>
                 <p className="text-white/65 mb-6 leading-relaxed">{project.description}</p>
                 <div className="flex flex-wrap gap-2">
-                  {project.tech.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 rounded-full text-xs bg-white/[0.05] text-white/60 border border-white/10"
-                    >
-                      {tech}
-                    </span>
-                  ))}
+                  {project.tech.map((tech) => {
+                    const Icon = techIconMap[tech];
+                    return (
+                      <span
+                        key={tech}
+                        className="flex items-center gap-1 px-3 py-1 rounded-full text-xs bg-white/[0.05] text-white/60 border border-white/10"
+                      >
+                        {Icon && <Icon className="w-4 h-4 mr-1 text-white/70" />}
+                        {tech}
+                      </span>
+                    );
+                  })}
                 </div>
               </motion.article>
             ))}
@@ -214,12 +219,15 @@ const WorkSection: React.FC = () => {
           >
             <h3 className="text-2xl font-semibold text-white mb-8">Microtools & Side Projects</h3>
             <div className="space-y-4">
-              {microtools.map((tool, index) => (
+              {microtools.map((tool) => (
                 <div key={tool.name} className="bg-white/[0.015] p-4 rounded-xl border border-white/10">
                   <div className="flex items-start justify-between gap-3">
-                    <div>
-                      <h4 className="text-sm font-medium text-white mb-1">{tool.name}</h4>
-                      <p className="text-xs text-white/50">{tool.description}</p>
+                    <div className="flex items-center gap-2">
+                      <Award className="w-4 h-4 text-white/50 flex-shrink-0" />
+                      <div>
+                        <h4 className="text-sm font-medium text-white mb-1">{tool.name}</h4>
+                        <p className="text-xs text-white/50">{tool.description}</p>
+                      </div>
                     </div>
                     {tool.url && (
                       <a

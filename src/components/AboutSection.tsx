@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Book, Coffee, Code2, GitBranch, Lightbulb } from 'lucide-react';
+import { Book, Coffee, Code2, GitBranch, Lightbulb, Package, Cloud } from 'lucide-react';
 
 const AboutSection: React.FC = () => {
   // Consolidated data for About section
@@ -11,10 +11,10 @@ const AboutSection: React.FC = () => {
   };
 
   const tools = [
-    { name: "VS Code", description: "Primary editor with TypeScript extensions" },
-    { name: "Git", description: "Version control for everything" },
-    { name: "Docker", description: "Consistent development environments" },
-    { name: "Vercel", description: "Fast frontend deployments" },
+    { name: "VS Code", description: "Primary editor with TypeScript extensions", icon: Code2 },
+    { name: "Git", description: "Version control for everything", icon: GitBranch },
+    { name: "Docker", description: "Consistent development environments", icon: Package },
+    { name: "Vercel", description: "Fast frontend deployments", icon: Cloud },
   ];
 
   const tips = [
@@ -146,7 +146,7 @@ const AboutSection: React.FC = () => {
             {tools.map((tool, index) => (
               <div key={tool.name} className="text-center">
                 <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-white/[0.05] flex items-center justify-center border border-white/15">
-                  <span className="text-xs font-medium text-white/60">{tool.name.slice(0, 2)}</span>
+                  <tool.icon className="w-5 h-5 text-white/60" />
                 </div>
                 <h4 className="text-sm font-medium text-white/80 mb-1">{tool.name}</h4>
                 <p className="text-xs text-white/50">{tool.description}</p>
