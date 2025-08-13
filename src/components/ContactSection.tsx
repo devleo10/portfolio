@@ -5,6 +5,7 @@ import { Mail, Github, ExternalLink, GitBranch } from 'lucide-react';
 const ContactSection: React.FC = () => {
   const [commitMsg, setCommitMsg] = useState<string | null>(null);
   const [repoName, setRepoName] = useState<string | null>(null);
+  const [commitUrl, setCommitUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -16,9 +17,10 @@ const ContactSection: React.FC = () => {
         if (!reposRes.ok) throw new Error(`GitHub API returned ${reposRes.status}`);
         const repos = await reposRes.json();
 
-        let latestCommit = null;
-        let latestDate = new Date(0); // epoch
-        let latestRepoName = null;
+  let latestCommit = null;
+  let latestDate = new Date(0); // epoch
+  let latestRepoName = null;
+  let latestCommitUrl = null;
 
         // Check latest commit from each repo
         for (const repo of repos.slice(0, 5)) { // Check top 5 recently updated repos
@@ -29,11 +31,11 @@ const ContactSection: React.FC = () => {
               if (commits.length > 0) {
                 const commit = commits[0];
                 const commitDate = new Date(commit.commit.author.date);
-                
                 if (commitDate > latestDate) {
                   latestDate = commitDate;
                   latestCommit = commit.commit.message;
                   latestRepoName = repo.name;
+                  latestCommitUrl = commit.html_url;
                 }
               }
             }
@@ -45,6 +47,7 @@ const ContactSection: React.FC = () => {
 
         setCommitMsg(latestCommit);
         setRepoName(latestRepoName);
+        setCommitUrl(latestCommitUrl);
       } catch (err) {
         console.error('Error fetching latest commit:', err);
         setCommitMsg(null);
@@ -223,7 +226,19 @@ const ContactSection: React.FC = () => {
                   <div className="text-sm text-white/40">Checking GitHub...</div>
                 ) : commitMsg ? (
                   <div>
-                    <div className="text-sm font-medium text-white/70">{commitMsg}</div>
+                    {commitUrl ? (
+                      <a
+                        href={commitUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-medium text-white/70 underline hover:text-white"
+                        title="View this commit on GitHub"
+                      >
+                        {commitMsg}
+                      </a>
+                    ) : (
+                      <div className="text-sm font-medium text-white/70">{commitMsg}</div>
+                    )}
                     {repoName && (
                       <div className="text-xs text-white/30 mt-1">{repoName}</div>
                     )}
