@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Github, ExternalLink, GitBranch } from 'lucide-react';
+import PageWrapper from './PageWrapper';
 
 const ContactSection: React.FC = () => {
   const [commitMsg, setCommitMsg] = useState<string | null>(null);
@@ -52,12 +53,9 @@ const ContactSection: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-32 bg-black relative overflow-hidden" id="contact">
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(255,255,255,0.02),transparent_70%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(255,255,255,0.01),transparent_65%)]" />
-      </div>
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
+    <PageWrapper showBottomGlow={false}>
+      <section className="py-32 relative overflow-hidden" id="contact">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
         {/* Find Me Online */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -160,7 +158,8 @@ const ContactSection: React.FC = () => {
           </div>
         </motion.div>
       </div>
-    </section>
+      </section>
+    </PageWrapper>
   );
 };
 

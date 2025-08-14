@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Book, Coffee, Code2, GitBranch, Lightbulb, Package, Cloud } from 'lucide-react';
+import PageWrapper from './PageWrapper';
 
 const AboutSection: React.FC = () => {
   // Consolidated data for About section
@@ -26,13 +27,9 @@ const AboutSection: React.FC = () => {
   const currentTip = tips[todayIndex];
 
   return (
-    <section className="py-32 bg-black relative overflow-hidden" id="about">
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(255,255,255,0.06),transparent_70%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(255,255,255,0.03),transparent_60%)]" />
-      </div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <PageWrapper>
+      <section className="py-32 relative overflow-hidden" id="about">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -64,12 +61,10 @@ const AboutSection: React.FC = () => {
           className="max-w-4xl mx-auto text-center mb-16"
         >
           <p className="text-xl text-white/70 leading-relaxed mb-6">
-            Full-stack tinkerer, open-source enthusiast, and the mind behind Clinkr & Cluefund. 
-            From drag-and-drop wizardry to cloud-native deployments, I turn caffeine and code into real-world impact.
+            Full-stack tinkerer and open-source enthusiast passionate about building scalable solutions, robust microservices, and clean, intuitive user interfaces. I focus on creating products that solve real-world problems—projects with genuine utility, not just portfolio pieces.
           </p>
           <p className="text-lg text-white/60 leading-relaxed">
-            Currently interning at House of EdTech, building scalable mutual fund platforms with Go and Next.js. 
-            When I'm not architecting solutions, you'll find me contributing to open-source projects or experimenting with WebAssembly.
+            Currently interning at House of EdTech, where I work with Next.js, Node.js, Python, Supabase, and AWS to design and implement microservice-driven architectures for mutual fund platforms. When I’m not architecting solutions, you’ll find me traveling to new places or immersed in a good book.
           </p>
         </motion.div>
 
@@ -155,7 +150,8 @@ const AboutSection: React.FC = () => {
           </div>
         </motion.div>
       </div>
-    </section>
+      </section>
+    </PageWrapper>
   );
 };
 

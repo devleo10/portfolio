@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Calendar, MapPin, Award, ArrowRight } from 'lucide-react';
 import { techIconMap } from './techIconMap';
+import PageWrapper from './PageWrapper';
 
 type Project = {
   title: string;
@@ -39,13 +40,6 @@ const WorkSection: React.FC = () => {
         "Full-stack investment tracking platform with real-time portfolio analytics, performance metrics, and market insights.",
       tech: ["Next.js", "Node.js", "MongoDB", "Chart.js"],
       url: "#",
-    },
-    {
-      title: "Go Doc Parser",
-      description:
-        "A Go utility to parse and process documentation files, making it easier to extract and analyze structured information from codebases.",
-      tech: ["Go"],
-      url: "https://github.com/devleo10/go-doc-parser",
     },
     {
       title: "Hirebot — Autofill Chrome Extension",
@@ -131,13 +125,9 @@ const WorkSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-32 bg-black relative overflow-hidden" id="work">
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(255,255,255,0.04),transparent_70%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(255,255,255,0.025),transparent_65%)]" />
-      </div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <PageWrapper>
+      <section className="py-32 relative overflow-hidden" id="work">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -284,7 +274,8 @@ const WorkSection: React.FC = () => {
         </div>
 
       </div>
-    </section>
+      </section>
+    </PageWrapper>
   );
 };
 

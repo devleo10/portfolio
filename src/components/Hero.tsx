@@ -2,12 +2,25 @@
 
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { Mail, FileText } from 'lucide-react';
+
+import AnimatedButton from './AnimatedButton';
 
 const names = ["DEVLEO", "MEHBUB"];
 const ANIMATION_SPEED = 0.32; // seconds per letter (slower)
 const HOLD_TIME = 1.7; // seconds to hold full name before erasing (slower)
 
 const Hero: React.FC = () => {
+
+  // Inject shine animation keyframes once on mount
+  useEffect(() => {
+    if (typeof window !== 'undefined' && !document.getElementById('shine-move-keyframes')) {
+      const style = document.createElement('style');
+      style.id = 'shine-move-keyframes';
+      style.innerHTML = `@keyframes shine-move { 0% { left: -60%; } 100% { left: 100%; } }`;
+      document.head.appendChild(style);
+    }
+  }, []);
 
 
   const [nameIndex, setNameIndex] = useState(0);
@@ -286,35 +299,14 @@ const Hero: React.FC = () => {
             I love what I do, I do what I love. Breaking and building things for fun.
             </p>
           </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
-          >
-            <motion.a
-              href="mailto:mehbubwork@gmail.com"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="group relative overflow-hidden bg-white text-black px-8 py-4 rounded-xl font-semibold tracking-wide transition-all duration-300 shadow-[0_0_0_1px_rgba(255,255,255,0.15)] hover:shadow-[0_0_0_1px_rgba(255,255,255,0.35)]"
-            >
-              <span className="relative z-10 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-black/70" />
-                Contact Me
-              </span>
-              <div className="absolute inset-0 bg-gradient-to-b from-white to-white/80 opacity-0 group-hover:opacity-100 transition-opacity" />
-            </motion.a>
-            <motion.a
-              href="https://drive.google.com/file/d/1IoCJwRyoxIKsFKJCI0mSmrtz6KJNMmPN/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 rounded-xl font-semibold tracking-wide border border-white/25 text-white/80 hover:text-white hover:border-white/60 transition-colors"
-            >
-              Resume
-            </motion.a>
-          </motion.div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+            <a href="mailto:mehbubwork@gmail.com" style={{ textDecoration: 'none' }}>
+              <AnimatedButton label="Contact Me" icon="mail" />
+            </a>
+            <a href="https://drive.google.com/file/d/1IoCJwRyoxIKsFKJCI0mSmrtz6KJNMmPN/view?usp=drive_link" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+              <AnimatedButton label="Resume" icon="resume" />
+            </a>
+          </div>
         </div>
       </div>
     </div>

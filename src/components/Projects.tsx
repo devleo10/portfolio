@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import { techIconMap } from './techIconMap';
+import PageWrapper from './PageWrapper';
 
 type Project = {
   title: string;
@@ -57,13 +58,9 @@ const projects: Project[] = [
 
 const Projects: React.FC = () => {
   return (
-    <section className="py-32 bg-black relative overflow-hidden" id="projects">
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(255,255,255,0.04),transparent_70%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(255,255,255,0.025),transparent_65%)]" />
-      </div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <PageWrapper>
+      <section className="py-32 relative overflow-hidden" id="projects">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -141,7 +138,8 @@ const Projects: React.FC = () => {
           ))}
         </div>
       </div>
-    </section>
+      </section>
+    </PageWrapper>
   );
 };
 
