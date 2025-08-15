@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { Mail, FileText } from 'lucide-react';
 
 import AnimatedButton from './AnimatedButton';
+import SaltParticles from './SaltParticles';
 
 const names = ["DEVLEO", "MEHBUB"];
 const ANIMATION_SPEED = 0.32; // seconds per letter (slower)
@@ -50,6 +51,8 @@ const Hero: React.FC = () => {
 
   return (
     <div className="min-h-screen w-full bg-black relative overflow-hidden">
+      {/* Free-flowing salt particles background */}
+      <SaltParticles />
       {/* Subtle monochrome atmospheric mist */}
       <div
         className="absolute inset-0 z-0"
