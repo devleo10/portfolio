@@ -144,7 +144,7 @@ const WorkSection: React.FC = () => {
           >
             Work & Projects
           </motion.span>
-          <h2 className="text-5xl sm:text-6xl font-bold text-white mb-6 tracking-tight">
+          <h2 className="text-5xl sm:text-6xl font-bold text-white mb-6 tracking-tight font-pixel">
             My Work
           </h2>
           <div className="w-32 h-px bg-white/30 mx-auto" />

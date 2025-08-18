@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Book, Coffee, Code2, GitBranch, Lightbulb, Package, Cloud } from 'lucide-react';
 import PageWrapper from './PageWrapper';
+import { IconCloud } from './ui/icon-cloud';
 
 const AboutSection: React.FC = () => {
   // Consolidated data for About section
@@ -16,6 +17,30 @@ const AboutSection: React.FC = () => {
     { name: "Git", description: "Version control for everything", icon: GitBranch },
     { name: "Docker", description: "Consistent development environments", icon: Package },
     { name: "Vercel", description: "Fast frontend deployments", icon: Cloud },
+  ];
+
+  // Icon URLs for the 3D cloud - using black and white/monochrome versions
+  const iconUrls = [
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg"
   ];
 
   const tips = [
@@ -46,7 +71,7 @@ const AboutSection: React.FC = () => {
           >
             Get to know me
           </motion.span>
-          <h2 className="text-5xl sm:text-6xl font-bold text-white mb-6 tracking-tight">
+          <h2 className="text-5xl sm:text-6xl font-bold text-white mb-6 tracking-tight font-pixel">
             About Me
           </h2>
           <div className="w-32 h-px bg-white/30 mx-auto" />
@@ -125,28 +150,20 @@ const AboutSection: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Toolbox */}
+        {/* Tech Arsenal with Magic UI Icon Cloud */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
           viewport={{ once: true }}
-          className="bg-white/[0.02] p-8 rounded-2xl border border-white/10 backdrop-blur-sm"
+          className="text-center"
         >
-          <div className="flex items-center gap-3 mb-6">
-            <Code2 className="w-6 h-6 text-white/60" />
-            <h3 className="text-xl font-semibold text-white">My Toolbox</h3>
-          </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            {tools.map((tool, index) => (
-              <div key={tool.name} className="text-center">
-                <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-white/[0.05] flex items-center justify-center border border-white/15">
-                  <tool.icon className="w-5 h-5 text-white/60" />
-                </div>
-                <h4 className="text-sm font-medium text-white/80 mb-1">{tool.name}</h4>
-                <p className="text-xs text-white/50">{tool.description}</p>
-              </div>
-            ))}
+          <h3 className="text-2xl font-semibold text-white mb-3 font-pixel">Tech Arsenal</h3>
+          <p className="text-white/60 mb-8">
+            Technologies and tools I work with to build modern applications
+          </p>
+          <div className="flex justify-center">
+            <IconCloud images={iconUrls} />
           </div>
         </motion.div>
       </div>
