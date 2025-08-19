@@ -62,7 +62,7 @@ const ContactSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
-          className="bg-white/[0.01] p-8 rounded-2xl border border-white/10 backdrop-blur-sm"
+          className="p-8"
         >
           <h3 className="text-xl font-semibold text-white mb-6">Find Me Online</h3>
           <div className="space-y-4">
@@ -109,14 +109,14 @@ const ContactSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
           viewport={{ once: true }}
-          className="bg-white/[0.005] p-8 rounded-2xl border border-white/10 backdrop-blur-sm"
+          className="p-8"
         >
           <div className="flex items-center gap-3 mb-6">
             <GitBranch className="w-6 h-6 text-white/40" />
             <h3 className="text-xl font-semibold text-white">Latest Git Activity</h3>
           </div>
           <div className="flex items-center gap-4">
-            <div className="px-3 py-2 rounded-lg bg-white/[0.05] border border-white/15 text-xs font-medium text-white/60">
+            <div className="px-3 py-2 text-xs font-medium text-white/60">
               git
             </div>
             <div className="flex-1">
@@ -151,7 +151,7 @@ const ContactSection: React.FC = () => {
               href="https://github.com/devleo10"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs px-3 py-2 rounded-lg border border-white/15 text-white/50 hover:text-white/80 hover:border-white/30 transition-colors"
+              className="text-xs px-3 py-2 text-white/50 hover:text-white/80 transition-colors"
             >
               View Profile
             </a>

@@ -1,11 +1,11 @@
-import { Hero, AboutSection, WorkSection, ContactSection } from './components';
+import { Hero, AboutSection, Projects, ContactSection } from './components';
 
 function App() {
   return (
     <div className="min-h-screen bg-black">
       <Hero />
       <AboutSection />
-      <WorkSection />
+      <Projects />
       <ContactSection />
     </div>
   );

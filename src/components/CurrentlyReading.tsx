@@ -29,7 +29,7 @@ const CurrentlyReading: React.FC = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="inline-block px-4 py-2 border border-white/15 rounded-full text-white/40 text-xs tracking-wider uppercase mb-5"
+            className="inline-block px-4 py-2 text-white/40 text-xs tracking-wider uppercase mb-5"
           >
             Page Turner
           </motion.span>
@@ -46,11 +46,11 @@ const CurrentlyReading: React.FC = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
             whileHover={{ y: -4 }}
-            className="group flex gap-6 items-start bg-white/[0.02] p-8 rounded-2xl border border-white/10 backdrop-blur-sm hover:border-white/20 transition-all duration-500"
+            className="group flex gap-6 items-start p-8 transition-all duration-500"
           >
-            <div className="absolute inset-0 rounded-2xl bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.06),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            {/* Card background removed */}
             
-            <div className="relative z-10 w-24 h-32 flex-shrink-0 rounded-lg bg-white/[0.05] flex items-center justify-center border border-white/15 shadow-[0_0_0_1px_rgba(255,255,255,0.05)]">
+              <div className="relative z-10 w-24 h-32 flex-shrink-0 flex items-center justify-center">
               <Book className="w-8 h-8 text-white/60" />
             </div>
 

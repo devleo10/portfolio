@@ -54,11 +54,11 @@ const Experience: React.FC = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="inline-block px-4 py-2 border border-white/15 rounded-full text-white/45 text-xs tracking-wider uppercase mb-5"
+            className="inline-block px-4 py-2 text-white/45 text-xs tracking-wider uppercase mb-5"
           >
             Career Journey
           </motion.span>
-          <h2 className="text-5xl sm:text-6xl font-bold text-white mb-6 tracking-tight font-pixel">
+          <h2 className="text-5xl sm:text-6xl font-bold text-white mb-6 tracking-tight">
             Experience
           </h2>
           <div className="w-32 h-px bg-white/30 mx-auto" />
@@ -85,10 +85,10 @@ const Experience: React.FC = () => {
               <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:pr-12 pl-24 md:pl-0' : 'md:pl-12 pl-24 md:pr-0'}`}>
                 <motion.div
                   whileHover={{ y: -4 }}
-                  className="relative rounded-2xl p-8 bg-white/[0.025] border border-white/10 hover:border-white/20 transition-all duration-500 backdrop-blur-sm"
+                  className="relative p-8 transition-all duration-500"
                 >
                   <div className="flex items-start justify-between mb-5">
-                    <div className="inline-block px-3 py-1 rounded-full text-[11px] font-medium bg-white/[0.05] text-white/60 tracking-wider uppercase border border-white/10">
+                    <div className="inline-block px-3 py-1 text-[11px] font-medium text-white/60 tracking-wider uppercase">
                       {exp.company}
                     </div>
                   </div>
@@ -114,7 +114,7 @@ const Experience: React.FC = () => {
                       <ul className="space-y-2">
                         {exp.achievements.map((achievement, i) => (
                           <li key={i} className="flex items-start gap-2 text-white/50 text-sm">
-                            <span className="w-1 h-1 rounded-full bg-white/30 mt-2" />
+                            <span className="w-1 h-1 bg-white/30 mt-2" />
                             <span className="leading-snug">{achievement}</span>
                           </li>
                         ))}

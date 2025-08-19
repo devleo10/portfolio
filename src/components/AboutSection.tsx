@@ -1,55 +1,123 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Book, Coffee, Code2, GitBranch, Lightbulb, Package, Cloud } from 'lucide-react';
+import { Book } from 'lucide-react';
 import PageWrapper from './PageWrapper';
 import { IconCloud } from './ui/icon-cloud';
 
 const AboutSection: React.FC = () => {
   // Consolidated data for About section
-  const book = {
-    title: "Deep Work",
-    author: "Cal Newport",
-    note: "To sharpen focused work and reduce context switching during project sprints.",
-  };
+  // Dynamically fetch currently reading book from Goodreads RSS
+  const [book, setBook] = useState<{
+    title: string;
+    author: string;
+    year: string;
+    rating: string;
+    cover: string;
+    link: string;
+    note: string;
+  } | null>(null);
 
-  const tools = [
-    { name: "VS Code", description: "Primary editor with TypeScript extensions", icon: Code2 },
-    { name: "Git", description: "Version control for everything", icon: GitBranch },
-    { name: "Docker", description: "Consistent development environments", icon: Package },
-    { name: "Vercel", description: "Fast frontend deployments", icon: Cloud },
-  ];
+  useEffect(() => {
+    async function fetchBook() {
+      try {
+        // Try multiple CORS proxies
+        const proxies = [
+          'https://api.allorigins.win/raw?url=',
+          'https://corsproxy.io/?',
+          'https://cors.sh/'
+        ];
+        
+        const targetUrl = 'https://www.goodreads.com/review/list_rss/193041251?shelf=currently-reading';
+        let text = '';
+        
+        for (const proxy of proxies) {
+          try {
+            const res = await fetch(proxy + encodeURIComponent(targetUrl));
+            if (res.ok) {
+              text = await res.text();
+              break;
+            }
+          } catch (e) {
+            continue;
+          }
+        }
+        
+        if (!text) throw new Error('All proxies failed');
+        
+        // Parse XML
+        const parser = new window.DOMParser();
+        const xml = parser.parseFromString(text, 'text/xml');
+        const item = xml.querySelector('item');
+        if (!item) throw new Error('No items found');
+        
+        const title = item.querySelector('title')?.textContent || '';
+        const description = item.querySelector('description')?.textContent || '';
+        const link = item.querySelector('link')?.textContent || '';
+        
+        // Extract author from description
+        const authorMatch = description.match(/author: ([^<]+)/);
+        const author = authorMatch ? authorMatch[1].trim() : '';
+        
+        // Extract year from description
+        const yearMatch = description.match(/book published: (\d+)/);
+        const year = yearMatch ? yearMatch[1] : '';
+        
+        // Extract rating from description
+        const ratingMatch = description.match(/average rating: ([\d.]+)/);
+        const rating = ratingMatch ? ratingMatch[1] : '';
+        
+        // Extract cover image from description HTML
+        const coverMatch = description.match(/src="([^"]+)"/);
+        const cover = coverMatch ? coverMatch[1] : '';
+        
+        setBook({ title, author, year, rating, cover, link, note: 'Currently reading this amazing book!' });
+      } catch (e) {
+        console.error('Failed to fetch book:', e);
+        // Fallback data
+        setBook({
+          title: "The Murder Game (Griffin Powell, #8)",
+          author: "Beverly Barton", 
+          year: "2008",
+          rating: "4.16",
+          cover: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1348603451l/1932163._SY75_.jpg",
+          link: "https://www.goodreads.com/book/show/1932163.The_Murder_Game",
+          note: "A thrilling mystery novel"
+        });
+      }
+    }
+    fetchBook();
+  }, []);
+const iconUrls = [
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+  "https://cdn.simpleicons.org/github/FFFFFF",         // GitHub (white for visibility)
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+  "https://cdn.worldvectorlogo.com/logos/aws-2.svg", // AWS (official logo)
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg",
+  "https://cdn.simpleicons.org/postman/FF6C37",        // Postman (not in Devicon)
+  "https://cdn.simpleicons.org/jsonwebtokens/FFFFFF", // JWT
+  "https://cdn.simpleicons.org/turborepo/EF4444",     // TurboRepo
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg",
+  "https://cdn.simpleicons.org/prisma/FFFFFF",        // Prisma (white for visibility)
+  "https://cdn.simpleicons.org/vercel/000000",        // Vercel
+  "https://cdn.simpleicons.org/sass/CC6699",          // Sass
+  "https://cdn.simpleicons.org/materialui/007FFF"     // Material UI
+];
 
-  // Icon URLs for the 3D cloud - using black and white/monochrome versions
-  const iconUrls = [
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg",
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg",
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg",
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg",
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg",
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg",
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg",
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg",
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg",
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg",
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg"
-  ];
 
-  const tips = [
-    "TIL: Use `git restore --staged` to unstage files safely.",
-    "Dev Tip: Keep component props minimal — pass functions only when necessary.",
-    "Pro Tip: Use CSS custom properties for dynamic theming.",
-  ];
-  const todayIndex = new Date().getDate() % tips.length;
-  const currentTip = tips[todayIndex];
 
   return (
     <PageWrapper>
@@ -71,7 +139,7 @@ const AboutSection: React.FC = () => {
           >
             Get to know me
           </motion.span>
-          <h2 className="text-5xl sm:text-6xl font-bold text-white mb-6 tracking-tight font-pixel">
+          <h2 className="text-5xl sm:text-6xl font-bold font-pixel text-white mb-6 tracking-tight">
             About Me
           </h2>
           <div className="w-32 h-px bg-white/30 mx-auto" />
@@ -93,79 +161,44 @@ const AboutSection: React.FC = () => {
           </p>
         </motion.div>
 
-        {/* Grid of Info Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-          {/* Currently Reading */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            viewport={{ once: true }}
-            className="bg-white/[0.02] p-8 rounded-2xl border border-white/10 backdrop-blur-sm"
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <Book className="w-6 h-6 text-white/60" />
-              <h3 className="text-xl font-semibold text-white">Currently Reading</h3>
-            </div>
-            <div className="flex gap-4 items-start">
-              <div className="w-16 h-20 flex-shrink-0 rounded-md bg-white/[0.05] flex items-center justify-center border border-white/15">
-                <Book className="w-6 h-6 text-white/40" />
-              </div>
-              <div>
-                <h4 className="text-lg font-medium text-white mb-1">{book.title}</h4>
-                <p className="text-sm text-white/60 mb-2">{book.author}</p>
-                <p className="text-sm text-white/50">{book.note}</p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Random/Fun */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="bg-white/[0.02] p-8 rounded-2xl border border-white/10 backdrop-blur-sm"
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <Lightbulb className="w-6 h-6 text-white/60" />
-              <h3 className="text-xl font-semibold text-white">Random Updates</h3>
-            </div>
-            <div className="space-y-4">
-              <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <Coffee className="w-4 h-4 text-white/40" />
-                  <span className="text-sm font-medium text-white/70">Now</span>
-                </div>
-                <p className="text-sm text-white/50">Learning: WebAssembly experiments for compute-heavy tasks</p>
-              </div>
-              <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <Code2 className="w-4 h-4 text-white/40" />
-                  <span className="text-sm font-medium text-white/70">Dev Tip</span>
-                </div>
-                <p className="text-sm text-white/50">{currentTip}</p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Tech Arsenal with Magic UI Icon Cloud */}
+        {/* Currently Reading (from Goodreads, dynamic) - No Box */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
           viewport={{ once: true }}
-          className="text-center"
+          className="max-w-2xl mx-auto mb-16"
         >
-          <h3 className="text-2xl font-semibold text-white mb-3 font-pixel">Tech Arsenal</h3>
-          <p className="text-white/60 mb-8">
-            Technologies and tools I work with to build modern applications
-          </p>
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <Book className="w-6 h-6 text-white/60" />
+            <h3 className="text-xl font-semibold text-white">Currently Reading</h3>
+          </div>
+          {book ? (
+            <div className="flex gap-6 items-start justify-center">
+              <a href={book.link} target="_blank" rel="noopener noreferrer" className="w-20 h-28 flex-shrink-0 rounded-md overflow-hidden border border-white/15 bg-white/[0.05] flex items-center justify-center hover:scale-105 transition-transform">
+                <img src={book.cover} alt={book.title} className="w-full h-full object-cover" />
+              </a>
+              <div className="text-center">
+                <a href={book.link} target="_blank" rel="noopener noreferrer" className="text-lg font-medium text-white mb-1 hover:underline block">{book.title}</a>
+                <p className="text-sm text-white/60 mb-1">by {book.author} <span className="text-white/30">({book.year})</span></p>
+                <p className="text-xs text-yellow-400 mb-2">Goodreads rating: {book.rating} ⭐</p>
+                <p className="text-sm text-white/50">{book.note}</p>
+              </div>
+            </div>
+          ) : (
+            <div className="text-white/40 text-sm text-center">Loading current book...</div>
+          )}
+        </motion.div>
+
+        {/* Tech Arsenal Heading and Icon Cloud Only */}
+        <div className="mb-16">
+          <h3 className="text-3xl sm:text-4xl font-pixel text-white text-center mb-8 tracking-tight">
+            Tech Arsenal
+          </h3>
           <div className="flex justify-center">
             <IconCloud images={iconUrls} />
           </div>
-        </motion.div>
+        </div>
       </div>
       </section>
     </PageWrapper>
