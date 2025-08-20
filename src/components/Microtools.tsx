@@ -62,7 +62,7 @@ const Microtools: React.FC = () => {
           <div className="w-32 h-px bg-white/30 mx-auto" />
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           {microtools.map((tool, index) => (
             <motion.article
               key={tool.name}

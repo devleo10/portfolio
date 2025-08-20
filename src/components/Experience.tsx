@@ -74,7 +74,7 @@ const Experience: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.15 }}
               viewport={{ once: true }}
-              className={`relative flex items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} mb-16 last:mb-0`}
+              className={`relative flex flex-col md:flex-row ${index % 2 === 0 ? '' : 'md:flex-row-reverse'} mb-10 md:mb-16 last:mb-0`}
             >
               <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-14 h-14 bg-white/[0.03] rounded-full border border-white/10 flex items-center justify-center shadow-[0_0_0_1px_rgba(255,255,255,0.05)] z-10">
                 <div className="w-7 h-7 rounded-full bg-white/[0.08] flex items-center justify-center text-white/60">
@@ -82,7 +82,7 @@ const Experience: React.FC = () => {
                 </div>
               </div>
               
-              <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:pr-12 pl-24 md:pl-0' : 'md:pl-12 pl-24 md:pr-0'}`}>
+              <div className={`w-full md:w-1/2 px-4 sm:px-8 ${index % 2 === 0 ? 'md:pr-12 md:pl-0' : 'md:pl-12 md:pr-0'}`}>
                 <motion.div
                   whileHover={{ y: -4 }}
                   className="relative p-8 transition-all duration-500"

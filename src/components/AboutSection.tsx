@@ -1,92 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Book } from 'lucide-react';
 import PageWrapper from './PageWrapper';
 import { IconCloud } from './ui/icon-cloud';
 
 const AboutSection: React.FC = () => {
   // Consolidated data for About section
   // Dynamically fetch currently reading book from Goodreads RSS
-  const [book, setBook] = useState<{
-    title: string;
-    author: string;
-    year: string;
-    rating: string;
-    cover: string;
-    link: string;
-    note: string;
-  } | null>(null);
 
-  useEffect(() => {
-    async function fetchBook() {
-      try {
-        // Try multiple CORS proxies
-        const proxies = [
-          'https://api.allorigins.win/raw?url=',
-          'https://corsproxy.io/?',
-          'https://cors.sh/'
-        ];
-        
-        const targetUrl = 'https://www.goodreads.com/review/list_rss/193041251?shelf=currently-reading';
-        let text = '';
-        
-        for (const proxy of proxies) {
-          try {
-            const res = await fetch(proxy + encodeURIComponent(targetUrl));
-            if (res.ok) {
-              text = await res.text();
-              break;
-            }
-          } catch (e) {
-            continue;
-          }
-        }
-        
-        if (!text) throw new Error('All proxies failed');
-        
-        // Parse XML
-        const parser = new window.DOMParser();
-        const xml = parser.parseFromString(text, 'text/xml');
-        const item = xml.querySelector('item');
-        if (!item) throw new Error('No items found');
-        
-        const title = item.querySelector('title')?.textContent || '';
-        const description = item.querySelector('description')?.textContent || '';
-        const link = item.querySelector('link')?.textContent || '';
-        
-        // Extract author from description
-        const authorMatch = description.match(/author: ([^<]+)/);
-        const author = authorMatch ? authorMatch[1].trim() : '';
-        
-        // Extract year from description
-        const yearMatch = description.match(/book published: (\d+)/);
-        const year = yearMatch ? yearMatch[1] : '';
-        
-        // Extract rating from description
-        const ratingMatch = description.match(/average rating: ([\d.]+)/);
-        const rating = ratingMatch ? ratingMatch[1] : '';
-        
-        // Extract cover image from description HTML
-        const coverMatch = description.match(/src="([^"]+)"/);
-        const cover = coverMatch ? coverMatch[1] : '';
-        
-        setBook({ title, author, year, rating, cover, link, note: 'Currently reading this amazing book!' });
-      } catch (e) {
-        console.error('Failed to fetch book:', e);
-        // Fallback data
-        setBook({
-          title: "The Murder Game (Griffin Powell, #8)",
-          author: "Beverly Barton", 
-          year: "2008",
-          rating: "4.16",
-          cover: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1348603451l/1932163._SY75_.jpg",
-          link: "https://www.goodreads.com/book/show/1932163.The_Murder_Game",
-          note: "A thrilling mystery novel"
-        });
-      }
-    }
-    fetchBook();
-  }, []);
 const iconUrls = [
   "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
   "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
@@ -161,41 +81,14 @@ const iconUrls = [
           </p>
         </motion.div>
 
-        {/* Currently Reading (from Goodreads, dynamic) - No Box */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-          viewport={{ once: true }}
-          className="max-w-2xl mx-auto mb-16"
-        >
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <Book className="w-6 h-6 text-white/60" />
-            <h3 className="text-xl font-semibold text-white">Currently Reading</h3>
-          </div>
-          {book ? (
-            <div className="flex gap-6 items-start justify-center">
-              <a href={book.link} target="_blank" rel="noopener noreferrer" className="w-20 h-28 flex-shrink-0 rounded-md overflow-hidden border border-white/15 bg-white/[0.05] flex items-center justify-center hover:scale-105 transition-transform">
-                <img src={book.cover} alt={book.title} className="w-full h-full object-cover" />
-              </a>
-              <div className="text-center">
-                <a href={book.link} target="_blank" rel="noopener noreferrer" className="text-lg font-medium text-white mb-1 hover:underline block">{book.title}</a>
-                <p className="text-sm text-white/60 mb-1">by {book.author} <span className="text-white/30">({book.year})</span></p>
-                <p className="text-xs text-yellow-400 mb-2">Goodreads rating: {book.rating} ⭐</p>
-                <p className="text-sm text-white/50">{book.note}</p>
-              </div>
-            </div>
-          ) : (
-            <div className="text-white/40 text-sm text-center">Loading current book...</div>
-          )}
-        </motion.div>
+     
 
         {/* Tech Arsenal Heading and Icon Cloud Only */}
-        <div className="mb-16">
+  <div className="mb-10 sm:mb-16">
           <h3 className="text-3xl sm:text-4xl font-pixel text-white text-center mb-8 tracking-tight">
             Tech Arsenal
           </h3>
-          <div className="flex justify-center">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-8">
             <IconCloud images={iconUrls} />
           </div>
         </div>

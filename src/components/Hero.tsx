@@ -1,8 +1,5 @@
-"use client"
-
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, FileText } from 'lucide-react';
 
 import AnimatedButton from './AnimatedButton';
 import SaltParticles from './SaltParticles';
@@ -290,7 +287,7 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.5 }}
           >
             <p className="text-2xl sm:text-3xl text-white/80 mb-10 font-light tracking-wide">
-              FullStack Developer & a Weirdo
+              Full‑Stack Engineer & Low‑Key Lunatic
             </p>
           </motion.div>
           <motion.div
@@ -299,8 +296,8 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.65 }}
           >
             <p className="text-lg text-white/60 mb-12 max-w-3xl mx-auto leading-relaxed">
-            I love what I do, I do what I love. Breaking and building things for fun.
-            </p>
+             I build things, I break things, I learn fast.
+           </p>
           </motion.div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <a href="mailto:mehbubwork@gmail.com" style={{ textDecoration: 'none' }}>
