@@ -26,7 +26,7 @@ const Hero: React.FC = () => {
   const [direction, setDirection] = useState<'in' | 'out'>('in');
 
   useEffect(() => {
-    let timeout: NodeJS.Timeout;
+    let timeout: ReturnType<typeof setTimeout>;
     if (direction === 'in') {
       if (displayed < names[nameIndex].length) {
         timeout = setTimeout(() => setDisplayed(prev => prev + 1), ANIMATION_SPEED * 1000);
@@ -286,7 +286,7 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            <p className="text-2xl sm:text-3xl text-white/80 mb-10 font-light tracking-wide">
+            <p className="text-2xl sm:text-3xl mb-10 font-light tracking-wide" style={{ color: '#9199A6' }}>
               Full‑Stack Engineer & Low‑Key Lunatic
             </p>
           </motion.div>
@@ -295,9 +295,9 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.65 }}
           >
-            <p className="text-lg text-white/60 mb-12 max-w-3xl mx-auto leading-relaxed">
-             I build things, I break things, I learn fast.
-           </p>
+            <p className="text-lg mb-12 max-w-3xl mx-auto leading-relaxed" style={{ color: '#9199A6' }}>
+              I build things, I break things, I learn fast.
+            </p>
           </motion.div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <a href="mailto:mehbubwork@gmail.com" style={{ textDecoration: 'none' }}>

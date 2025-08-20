@@ -299,194 +299,165 @@ const ContactSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-24"
           >
-            <motion.span
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="inline-block px-4 py-2 text-white/40 text-xs tracking-wider uppercase mb-5"
-            >
-              Get In Touch
-            </motion.span>
-            <h2 className="text-4xl sm:text-5xl font-bold font-pixel text-white mb-6 tracking-tight">
-              Connect & Explore
+            <h2 className="text-3xl sm:text-4xl font-bold font-pixel text-white mb-4 tracking-tight">
+              Digital Footprint
             </h2>
-            <div className="w-24 h-px bg-white/30 mx-auto" />
+            <p className="text-base max-w-md mx-auto" style={{ color: '#9199A6' }}>
+              A snapshot of my online world: code, books, and ways to connect.
+            </p>
           </motion.div>
 
-          {/* Bento Grid Layout */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            
-            {/* Connect Me - Large Card (spans 2 columns on lg) */}
+          {/* Clean Layout */}
+          <div className="max-w-4xl mx-auto space-y-20">
+            {/* Contribution Graph */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
               viewport={{ once: true }}
-              className="lg:col-span-2 p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-300 group"
+              className="text-center"
             >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
-                  <ExternalLink className="w-5 h-5 text-white" />
-                </div>
-                <h3 className="text-xl font-semibold font-pixel text-white">Find Me Online</h3>
+              <div className="flex items-center justify-center gap-2 mb-6">
+                <Github className="w-5 h-5 text-purple-400" />
+                <h3 className="text-xl font-semibold font-pixel text-white">Recent Git Activity</h3>
               </div>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <a
-                  href="https://github.com/devleo10"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 p-4 bg-white/5 rounded-xl border border-white/10 hover:border-white/20 hover:bg-white/10 transition-all duration-300 group"
-                >
-                  <Github className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" />
+              {!loading && contributions.length > 0 && (
+                <div className="flex justify-center" style={{ color: '#9199A6' }}>
+                  <ContributionGraph contributions={contributions} />
+                </div>
+              )}
+            </motion.div>
+
+            {/* Latest Activity */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="grid md:grid-cols-2 gap-12"
+            >
+              {/* Latest Commit */}
+              <div className="text-center md:text-left" style={{ color: '#9199A6' }}>
+                <div className="flex items-center justify-center md:justify-start gap-2 mb-6">
+                  <GitBranch className="w-5 h-5 text-green-400" />
+                  <h3 className="text-xl font-semibold font-pixel text-white">Latest Commit</h3>
+                </div>
+                {loading ? (
+                  <div>Checking GitHub...</div>
+                ) : commitMsg ? (
                   <div>
-                    <div className="text-white font-medium">GitHub</div>
-                    <div className="text-white/40 text-sm">devleo10</div>
+                    {commitUrl ? (
+                      <a
+                        href={commitUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-white transition-colors leading-relaxed block mb-3"
+                        title="View this commit on GitHub"
+                        style={{ color: '#9199A6' }}
+                      >
+                        {commitMsg.length > 120 ? `${commitMsg.substring(0, 120)}...` : commitMsg}
+                      </a>
+                    ) : (
+                      <p className="leading-relaxed mb-3" style={{ color: '#9199A6' }}>
+                        {commitMsg.length > 120 ? `${commitMsg.substring(0, 120)}...` : commitMsg}
+                      </p>
+                    )}
+                    <div className="text-sm" style={{ color: '#9199A6' }}>
+                      {repoName && <span>{repoName}</span>}
+                      {commitDate && <span> • {commitDate}</span>}
+                    </div>
                   </div>
-                </a>
-                
-                <a
-                  href="https://www.linkedin.com/in/mehbub-alam-1b7b2b1b2/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 p-4 bg-white/5 rounded-xl border border-white/10 hover:border-white/20 hover:bg-white/10 transition-all duration-300 group"
-                >
-                  <div className="w-5 h-5 bg-blue-600 rounded flex items-center justify-center">
-                    <span className="text-xs font-bold text-white">in</span>
+                ) : (
+                  <div>No recent commits found</div>
+                )}
+              </div>
+
+              {/* Currently Reading */}
+              <div className="text-center md:text-left" style={{ color: '#9199A6' }}>
+                <div className="flex items-center justify-center md:justify-start gap-2 mb-6">
+                  <Book className="w-5 h-5 text-blue-400" />
+                  <h3 className="text-xl font-semibold font-pixel text-white">Currently Reading</h3>
+                </div>
+                {book ? (
+                  <div className="flex items-start gap-4 justify-center md:justify-start">
+                    <a
+                      href={book.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-16 h-20 flex-shrink-0 rounded overflow-hidden hover:scale-105 transition-transform"
+                    >
+                      <img src={book.cover} alt={book.title} className="w-full h-full object-cover" />
+                    </a>
+                    <div className="flex-1 min-w-0">
+                      <a
+                        href={book.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline block mb-1"
+                        style={{ color: '#9199A6', fontWeight: 500 }}
+                      >
+                        {book.title}
+                      </a>
+                      <p className="text-sm mb-1" style={{ color: '#9199A6' }}>
+                        by {book.author}
+                        {book.year && <span style={{ color: '#9199A6' }}> ({book.year})</span>}
+                      </p>
+                      <span className="text-yellow-400 text-sm">{book.rating}★ on Goodreads</span>
+                    </div>
                   </div>
-                  <div>
-                    <div className="text-white font-medium">LinkedIn</div>
-                    <div className="text-white/40 text-sm">Professional</div>
-                  </div>
-                </a>
-                
-                <a
-                  href="https://twitter.com/_devleo10"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 p-4 bg-white/5 rounded-xl border border-white/10 hover:border-white/20 hover:bg-white/10 transition-all duration-300 group"
-                >
-                  <div className="w-5 h-5 bg-black rounded flex items-center justify-center">
-                    <span className="text-xs font-bold text-white">𝕏</span>
-                  </div>
-                  <div>
-                    <div className="text-white font-medium">Twitter</div>
-                    <div className="text-white/40 text-sm">Updates</div>
-                  </div>
-                </a>
+                ) : (
+                  <div>Loading current book...</div>
+                )}
               </div>
             </motion.div>
 
-            {/* Currently Reading Card */}
-             <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-          viewport={{ once: true }}
-          className="max-w-2xl mx-auto mb-16"
-        >
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <Book className="w-6 h-6 text-white/60" />
-            <h3 className="text-xl font-semibold font-pixel text-white">Currently Reading</h3>
-          </div>
-          {book ? (
-            <div className="flex gap-4 items-start justify-center">
-              <a href={book.link} target="_blank" rel="noopener noreferrer" className="w-12 h-16 flex-shrink-0 rounded-md overflow-hidden border border-white/15 bg-white/[0.05] flex items-center justify-center hover:scale-105 transition-transform">
-                <img src={book.cover} alt={book.title} className="w-full h-full object-cover" />
-              </a>
-              <div className="text-center">
-                <a href={book.link} target="_blank" rel="noopener noreferrer" className="text-lg font-medium text-white mb-1 hover:underline block">{book.title}</a>
-                <p className="text-sm text-white/60 mb-1">by {book.author} <span className="text-white/30">({book.year})</span></p>
-                <p className="text-xs text-yellow-400 mb-2">Goodreads rating: {book.rating} ⭐</p>
-                <p className="text-sm text-white/50">{book.note}</p>
-              </div>
-            </div>
-          ) : (
-            <div className="text-white/40 text-sm text-center">Loading current book...</div>
-          )}
-        </motion.div>
-
-            {/* Latest Commit Card */}
+            {/* Social Links */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
               viewport={{ once: true }}
-              className="p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-300 group"
+              className="text-center"
+              style={{ color: '#9199A6' }}
             >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center">
-                  <GitBranch className="w-5 h-5 text-white" />
-                </div>
-                <h3 className="text-lg font-semibold font-pixel text-white">Latest Commit</h3>
+              <h3 className="text-2xl font-semibold font-pixel text-white mb-8">Get in touch</h3>
+              <div className="flex justify-center gap-8">
+                <a
+                  href="https://github.com/devleo10"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex flex-col items-center gap-3 hover:text-white transition-all duration-300"
+                >
+                  <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-colors">
+                    <Github className="w-6 h-6" />
+                  </div>
+                  <span className="text-sm font-medium">GitHub</span>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/mehbub-alam-1b7b2b1b2/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex flex-col items-center gap-3 hover:text-white transition-all duration-300"
+                >
+                  <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-colors">
+                    <span className="w-6 h-6 flex items-center justify-center bg-blue-600 rounded text-sm font-bold text-white">in</span>
+                  </div>
+                  <span className="text-sm font-medium">LinkedIn</span>
+                </a>
+                <a
+                  href="https://twitter.com/_devleo10"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex flex-col items-center gap-3 hover:text-white transition-all duration-300"
+                >
+                  <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-colors">
+                    <span className="w-6 h-6 flex items-center justify-center bg-black rounded text-sm font-bold text-white">𝕏</span>
+                  </div>
+                  <span className="text-sm font-medium">Twitter</span>
+                </a>
               </div>
-              
-              {loading ? (
-                <div className="text-sm text-white/40">Checking GitHub...</div>
-              ) : commitMsg ? (
-                <div className="space-y-3">
-                  {commitUrl ? (
-                    <a
-                      href={commitUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block text-white/70 hover:text-white transition-colors font-medium text-sm leading-relaxed"
-                      title="View this commit on GitHub"
-                    >
-                      {commitMsg.length > 60 ? `${commitMsg.substring(0, 60)}...` : commitMsg}
-                    </a>
-                  ) : (
-                    <div className="text-white/70 font-medium text-sm leading-relaxed">
-                      {commitMsg.length > 60 ? `${commitMsg.substring(0, 60)}...` : commitMsg}
-                    </div>
-                  )}
-                  <div className="flex items-center gap-2 text-xs text-white/40">
-                    {repoName && <span>{repoName}</span>}
-                    {commitDate && <span>• {commitDate}</span>}
-                  </div>
-                </div>
-              ) : (
-                <div className="text-xs text-white/30">No recent commits found</div>
-              )}
-            </motion.div>
-
-            {/* Contribution Graph Card (spans 2 columns) */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="lg:col-span-2 p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-300 group"
-            >
-              <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-gradient-to-br from-violet-500 to-purple-600 rounded-xl flex items-center justify-center">
-                    <Github className="w-5 h-5 text-white" />
-                  </div>
-                  <h3 className="text-lg font-semibold font-pixel text-white">Contribution Activity</h3>
-                </div>
-                
-                <div className="flex items-center gap-2 text-xs text-white/40">
-                  <span>Less</span>
-                  <div className="flex gap-1">
-                    <div className="w-2 h-2 rounded-sm bg-white/10"></div>
-                    <div className="w-2 h-2 rounded-sm bg-green-500/30"></div>
-                    <div className="w-2 h-2 rounded-sm bg-green-500/50"></div>
-                    <div className="w-2 h-2 rounded-sm bg-green-500/70"></div>
-                    <div className="w-2 h-2 rounded-sm bg-green-500/90"></div>
-                  </div>
-                  <span>More</span>
-                </div>
-              </div>
-              
-              {!loading && contributions.length > 0 && (
-                <div className="bg-black/20 p-4 rounded-xl border border-white/5">
-                  <ContributionGraph contributions={contributions} />
-                </div>
-              )}
             </motion.div>
 
           </div>

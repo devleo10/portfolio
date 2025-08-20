@@ -2,23 +2,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
 
-// Black and white construction cone icon as SVG component
+// Glowing green circular Work In Progress icon
 const WorkInProgressIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.5"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="w-5 h-5 text-black dark:text-white ml-2 cursor-pointer relative"
-  >
-    <rect x="3" y="20" width="18" height="2" fill="currentColor" opacity="0.8" />
-    <path d="M12 2L4 20h16L12 2z" fill="#fff" stroke="currentColor" />
-    <path d="M12 6l-2 6h4l-2-6z" fill="#000" opacity="0.7" />
-    <path d="M10 12l-1.5 4h7L14 12h-4z" fill="#000" opacity="0.4" />
-  </svg>
+  <span className="relative flex items-center justify-center ml-2">
+    <span className="absolute inline-flex h-5 w-5 rounded-full bg-green-400 opacity-75 animate-pulse" />
+    <span className="relative inline-flex rounded-full h-3 w-3 bg-green-400 border-2 border-green-300 shadow-lg" />
+  </span>
 );
 import { techIconMap } from './techIconMap';
 import PageWrapper from './PageWrapper';
@@ -43,15 +32,6 @@ type OtherProject = {
 
 const mainProjects: MainProject[] = [
   {
-    title: "MindGrid",
-    description:
-      "A modern productivity workspace with AI assistance, calendar integration, task management, and gamification. Built with Next.js, TypeScript, and featuring Google Gemini AI integration, real-time collaboration, and beautiful UI components.",
-    tech: ["Next.js", "TypeScript", "Supabase", "Google AI", "Calendar API"],
-    url: "https://mindgrid0.vercel.app/",
-    github: "https://github.com/devleo10/MindGrid",
-    image: "/img/mindgrid.png",
-  },
-  {
     title: "Clinkr — Link Analytics",
     description:
       "React + Supabase platform for tracking device, browser and geographical data with real-time updates. One-click auth and ultra-fast edge responses for comprehensive link analytics.",
@@ -59,6 +39,15 @@ const mainProjects: MainProject[] = [
     url: "https://clinkr.live",
     github: "https://github.com/devleo10/clinkr",
     image: "/img/clinkr.png",
+  },
+  {
+    title: "MindGrid",
+    description:
+      "A modern productivity workspace with AI assistance, calendar integration, task management, and gamification. Built with Next.js, TypeScript, and featuring Google Gemini AI integration, real-time collaboration, and beautiful UI components.",
+    tech: ["Next.js", "TypeScript", "Supabase", "Google AI", "Calendar API"],
+    url: "https://mindgrid0.vercel.app/",
+    github: "https://github.com/devleo10/MindGrid",
+    image: "/img/mindgrid.png",
   },
 ];
 
@@ -88,6 +77,20 @@ const otherProjects: OtherProject[] = [
     tech: ["Python"],
     url: "https://github.com/devleo10/paincakes",
     inProgress: true,
+  },
+  {
+    title: "Cluefund – Smart Mutual Fund Tracker",
+    description:
+      "A modern, responsive web application that tracks mutual fund performance in real-time with secure authentication, comprehensive fund search, and portfolio management capabilities. Built with React, TypeScript, Tailwind CSS, and Vite.",
+    tech: ["React", "TypeScript", "Tailwind CSS", "Vite"],
+    url: "https://github.com/devleo10/cluefund-client",
+  },
+  {
+    title: "Whooshh – Your Personal Weather Companion",
+    description:
+      "A sleek weather application delivering live weather updates and comprehensive insights such as temperature, humidity, and wind speed. Developed using HTML, CSS, and JavaScript, leveraging OpenWeatherMap and Unsplash APIs.",
+    tech: ["HTML", "CSS", "JavaScript"],
+    url: "https://github.com/devleo10/Whooshh",
   },
 ];
 
@@ -145,23 +148,12 @@ const Projects: React.FC = () => {
               
               <div className="relative z-10">
                 <div className="flex items-start justify-between gap-4 mb-4">
-                  <h3 className="text-3xl font-bold text-white tracking-tight">
+                  <h3 className="text-3xl font-bold font-pixel text-white tracking-tight">
                     {project.title}
                   </h3>
                   <div className="flex gap-2 items-center">
-                    {project.github && (
-                      <motion.a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="flex items-center justify-center w-10 h-10 text-white/70 hover:text-white transition-colors duration-300"
-                      >
-                        <Github className="w-5 h-5" />
-                      </motion.a>
-                    )}
-                    {project.url && (
+                    {/* Only show live link for Clinkr */}
+                    {project.title === "Clinkr — Link Analytics" && project.url && (
                       <motion.a
                         href={project.url}
                         target="_blank"
@@ -173,22 +165,39 @@ const Projects: React.FC = () => {
                         <ExternalLink className="w-5 h-5" />
                       </motion.a>
                     )}
-                    {project.github && (
-                      <motion.a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="flex items-center justify-center w-10 h-10 text-white/70 hover:text-white transition-colors duration-300"
-                      >
-                        <Github className="w-5 h-5" />
-                      </motion.a>
+                    {/* Show GitHub and live link for MindGrid */}
+                    {project.title === "MindGrid" && (
+                      <>
+                        {project.github && (
+                          <motion.a
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="flex items-center justify-center w-10 h-10 text-white/70 hover:text-white transition-colors duration-300"
+                          >
+                            <Github className="w-5 h-5" />
+                          </motion.a>
+                        )}
+                        {project.url && (
+                          <motion.a
+                            href={project.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="flex items-center justify-center w-10 h-10 text-white/70 hover:text-white transition-colors duration-300"
+                          >
+                            <ExternalLink className="w-5 h-5" />
+                          </motion.a>
+                        )}
+                      </>
                     )}
                   </div>
                 </div>
                 
-                <p className="text-white/70 mb-6 leading-relaxed text-lg">
+                <p className="mb-6 leading-relaxed text-lg" style={{ color: '#9199A6' }}>
                   {project.description}
                 </p>
                 
@@ -198,9 +207,10 @@ const Projects: React.FC = () => {
                     return (
                       <span
                         key={tech}
-                        className="flex items-center gap-1 px-3 py-1 text-sm text-white/60 tracking-wide"
+                        className="flex items-center gap-1 px-3 py-1 text-sm tracking-wide"
+                        style={{ color: '#9199A6' }}
                       >
-                        {Icon && <Icon className="w-4 h-4 mr-1 text-white/70" />}
+                        {Icon && <Icon className="w-4 h-4 mr-1" style={{ color: '#9199A6' }} />}
                         {tech}
                       </span>
                     );
@@ -238,8 +248,13 @@ const Projects: React.FC = () => {
             >
               <div className="relative z-10">
                 <div className="flex items-start justify-between gap-4 mb-3">
-                  <h4 className="text-lg font-semibold text-white tracking-tight">
+                  <h4 className="text-lg font-semibold font-pixel text-white tracking-tight">
                     {project.title}
+                    {project.title === "MindGrid" && (
+                      <span title="Work in Progress" className="ml-2 align-middle inline-block">
+                        <WorkInProgressIcon />
+                      </span>
+                    )}
                   </h4>
                   <div className="flex items-center gap-1">
                     {project.inProgress && (
@@ -258,14 +273,15 @@ const Projects: React.FC = () => {
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.95 }}
                         className="flex items-center justify-center w-8 h-8 text-white/70 hover:text-white transition-colors duration-300"
+                        title="View on GitHub"
                       >
-                        <ExternalLink className="w-4 h-4" />
+                        <Github className="w-4 h-4" />
                       </motion.a>
                     )}
                   </div>
                 </div>
                 
-                <p className="text-white/60 mb-4 leading-relaxed text-sm">
+                <p className="mb-4 leading-relaxed text-sm" style={{ color: '#9199A6' }}>
                   {project.description}
                 </p>
                 
@@ -275,9 +291,10 @@ const Projects: React.FC = () => {
                     return (
                       <span
                         key={tech}
-                        className="flex items-center gap-1 px-2 py-1 text-xs text-white/50 tracking-wide"
+                        className="flex items-center gap-1 px-2 py-1 text-xs tracking-wide"
+                        style={{ color: '#9199A6' }}
                       >
-                        {Icon && <Icon className="w-3 h-3 mr-1 text-white/60" />}
+                        {Icon && <Icon className="w-3 h-3 mr-1" style={{ color: '#9199A6' }} />}
                         {tech}
                       </span>
                     );
