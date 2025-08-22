@@ -135,12 +135,12 @@ const Projects: React.FC = () => {
               className="group relative overflow-hidden transition-all duration-500"
             >
               {/* Project Image */}
-              <div className="relative mb-6 overflow-hidden h-64">
-                <div className="w-full h-64 rounded-xl overflow-hidden relative">
+              <div className="relative mb-6 w-full aspect-[16/9] sm:h-64 overflow-hidden">
+                <div className="w-full h-full rounded-xl overflow-hidden relative">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 bg-black"
                     style={{ objectPosition: 'top center' }}
                   />
                 </div>
