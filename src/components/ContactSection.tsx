@@ -5,29 +5,6 @@ import PageWrapper from './PageWrapper';
 
 
 
-// For production use with GitHub GraphQL API, you would need:
-// 1. A GitHub Personal Access Token (https://github.com/settings/tokens)
-// 2. Use this GraphQL query:
-// query {
-//   user(login: "devleo10") {
-//     contributionsCollection {
-//       contributionCalendar {
-//         totalContributions
-//         weeks {
-//           contributionDays {
-//             color
-//             contributionCount
-//             date
-//             weekday
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
-// 3. POST to https://api.github.com/graphql with Authorization: bearer TOKEN
-
-// GitHub-style contribution graph component (last 30 days)
 const ContributionGraph: React.FC<{ contributions: Array<{ date: string; count: number }> }> = ({ contributions }) => {
   const today = new Date();
   const last30Days = [];
