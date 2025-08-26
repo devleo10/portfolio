@@ -1,1 +1,1 @@
-Nothing to read here, go visit takealookat.me
+Nothing to read here, go visit [takealookat.me](https://takealookat.me)
