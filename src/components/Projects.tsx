@@ -97,7 +97,7 @@ const otherProjects: OtherProject[] = [
 const Projects: React.FC = () => {
   return (
     <PageWrapper>
-      <section className="py-32 relative overflow-hidden" id="projects">
+      <section className="py-8 relative overflow-hidden" id="projects">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Main Projects Section */}

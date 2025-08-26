@@ -42,6 +42,16 @@ const iconUrls = [
   return (
     <PageWrapper>
       <section className="py-32 relative overflow-hidden" id="about">
+        {/* Glowing effect to match upper portion */}
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            background: `
+              radial-gradient(ellipse 100% 80% at 50% 0%, rgba(255,255,255,0.08), transparent 60%),
+              radial-gradient(ellipse 80% 60% at 50% 100%, rgba(255,255,255,0.05), transparent 70%)
+            `,
+          }}
+        />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* About Me Section */}
           <motion.div
@@ -85,7 +95,7 @@ const iconUrls = [
 
           {/* Tech Arsenal Section */}
           <div className="py-10 sm:py-16 border-t border-white/10">
-            <h3 className="text-3xl sm:text-4xl font-pixel text-white text-center mb-8 tracking-tight">
+            <h3 className="text-5xl font-pixel text-white text-center mb-8 tracking-tight">
               Tech Arsenal
             </h3>
             <div className="flex flex-wrap justify-center gap-4 sm:gap-8">
