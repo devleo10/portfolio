@@ -5,7 +5,12 @@ import App from './App.tsx';
 import './index.css';
 import VercelAnalytics from './components/VercelAnalytics';
 
-createRoot(document.getElementById('root')!).render(
+const rootElement = document.getElementById('root');
+if (!rootElement) {
+  throw new Error('Root element not found');
+}
+
+createRoot(rootElement).render(
   <StrictMode>
     <App />
     <VercelAnalytics />

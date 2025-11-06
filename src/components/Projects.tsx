@@ -32,22 +32,22 @@ type OtherProject = {
 
 const mainProjects: MainProject[] = [
   {
-    title: "Clinkr — Link Analytics",
+    title: "Clinkr — Modern Link-in-Bio SaaS",
     description:
-      "React + Supabase platform for tracking device, browser and geographical data with real-time updates. One-click auth and ultra-fast edge responses for comprehensive link analytics.",
-    tech: ["React", "Supabase", "Edge Functions", "Vite"],
+      "Built a modern Link-in-Bio SaaS platform with personalized pages, link management, and real-time analytics dashboards. Implemented link shortening with custom short codes/slugs and QR code generation/expiration. Integrated comprehensive analytics (device, browser, geolocation, profile views) stored in a secure database.",
+    tech: ["React", "Supabase", "Tailwind CSS", "Framer Motion"],
     url: "https://clinkr.live",
     github: "https://github.com/devleo10/clinkr",
     image: "/img/clinkr.png",
   },
   {
-    title: "MindGrid",
+    title: "ClueFind — Developer Portfolio Platform",
     description:
-      "A modern productivity workspace with AI assistance, calendar integration, task management, and gamification. Built with Next.js, TypeScript, and featuring Google Gemini AI integration, real-time collaboration, and beautiful UI components.",
-    tech: ["Next.js", "TypeScript", "Supabase", "Google AI", "Calendar API"],
-    url: "https://mindgrid0.vercel.app/",
-    github: "https://github.com/devleo10/MindGrid",
-    image: "/img/mindgrid.png",
+      "Developed a modern developer portfolio platform to showcase skills, projects, and achievements. Integrated AI profile builder, skill endorsements, GitHub integration, and customizable public profiles. Built responsive UI using Next.js, Tailwind CSS, and Radix UI with secure backend using Prisma ORM and PostgreSQL.",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Radix UI", "Prisma", "PostgreSQL"],
+    url: "https://cluefind.software",
+    github: undefined,
+    image: "/img/cluefind.png",
   },
 ];
 
@@ -135,13 +135,12 @@ const Projects: React.FC = () => {
               className="group relative overflow-hidden transition-all duration-500"
             >
               {/* Project Image */}
-              <div className="relative mb-6 w-full aspect-[16/9] sm:h-64 overflow-hidden">
+              <div className="relative mb-6 w-full aspect-[16/9] overflow-hidden rounded-xl bg-black/50 border border-white/10">
                 <div className="w-full h-full rounded-xl overflow-hidden relative">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 bg-black"
-                    style={{ objectPosition: 'top center' }}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
               </div>
@@ -152,8 +151,19 @@ const Projects: React.FC = () => {
                     {project.title}
                   </h3>
                   <div className="flex gap-2 items-center">
-                    {/* Only show live link for Clinkr */}
-                    {project.title === "Clinkr — Link Analytics" && project.url && (
+                    {project.github && (
+                      <motion.a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="flex items-center justify-center w-10 h-10 text-white/70 hover:text-white transition-colors duration-300"
+                      >
+                        <Github className="w-5 h-5" />
+                      </motion.a>
+                    )}
+                    {project.url && (
                       <motion.a
                         href={project.url}
                         target="_blank"
@@ -164,35 +174,6 @@ const Projects: React.FC = () => {
                       >
                         <ExternalLink className="w-5 h-5" />
                       </motion.a>
-                    )}
-                    {/* Show GitHub and live link for MindGrid */}
-                    {project.title === "MindGrid" && (
-                      <>
-                        {project.github && (
-                          <motion.a
-                            href={project.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="flex items-center justify-center w-10 h-10 text-white/70 hover:text-white transition-colors duration-300"
-                          >
-                            <Github className="w-5 h-5" />
-                          </motion.a>
-                        )}
-                        {project.url && (
-                          <motion.a
-                            href={project.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="flex items-center justify-center w-10 h-10 text-white/70 hover:text-white transition-colors duration-300"
-                          >
-                            <ExternalLink className="w-5 h-5" />
-                          </motion.a>
-                        )}
-                      </>
                     )}
                   </div>
                 </div>
@@ -250,11 +231,6 @@ const Projects: React.FC = () => {
                 <div className="flex items-start justify-between gap-4 mb-3">
                   <h4 className="text-lg font-semibold font-pixel text-white tracking-tight">
                     {project.title}
-                    {project.title === "MindGrid" && (
-                      <span title="Work in Progress" className="ml-2 align-middle inline-block">
-                        <WorkInProgressIcon />
-                      </span>
-                    )}
                   </h4>
                   <div className="flex items-center gap-1">
                     {project.inProgress && (

@@ -89,7 +89,7 @@ const iconUrls = [
               Full-stack tinkerer and open-source enthusiast passionate about building scalable solutions, robust microservices, and clean, intuitive user interfaces. I focus on creating products that solve real-world problems—projects with genuine utility, not just portfolio pieces.
             </p>
             <p className="text-lg" style={{ color: '#9199A6' }}>
-              Currently interning at House of EdTech, where I work with Next.js, Node.js, Python, Supabase, and AWS to design and implement microservice-driven architectures for mutual fund platforms. When I’m not architecting solutions, you’ll find me traveling to new places or immersed in a good book.
+              Currently working as a Software Development Engineer at House of EdTech, where I work with Next.js, Node.js, Python, Supabase, and AWS to design and implement microservice-driven architectures for mutual fund platforms. When I'm not architecting solutions, you'll find me traveling to new places or immersed in a good book.
             </p>
           </motion.div>
 
