@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Github, ExternalLink, GitBranch, Book } from 'lucide-react';
+import { Github, ExternalLink, GitBranch, Book, Linkedin, Mail, Instagram } from 'lucide-react';
 import PageWrapper from './PageWrapper';
 
 
@@ -278,7 +278,7 @@ const ContactSection: React.FC = () => {
             viewport={{ once: true }}
             className="text-center mb-24"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold font-pixel text-white mb-4 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 tracking-tight">
               Digital Footprint
             </h2>
             <p className="text-base max-w-md mx-auto" style={{ color: '#9199A6' }}>
@@ -297,8 +297,8 @@ const ContactSection: React.FC = () => {
               className="text-center"
             >
               <div className="flex items-center justify-center gap-2 mb-6">
-                <Github className="w-5 h-5 text-purple-400" />
-                <h3 className="text-xl font-semibold font-pixel text-white">Recent Git Activity</h3>
+                <Github className="w-5 h-5 text-accent" />
+                <h3 className="text-xl font-semibold text-white">Recent Git Activity</h3>
               </div>
               {!loading && contributions.length > 0 && (
                 <div className="flex justify-center" style={{ color: '#9199A6' }}>
@@ -318,8 +318,8 @@ const ContactSection: React.FC = () => {
               {/* Latest Commit */}
               <div className="text-center md:text-left" style={{ color: '#9199A6' }}>
                 <div className="flex items-center justify-center md:justify-start gap-2 mb-6">
-                  <GitBranch className="w-5 h-5 text-green-400" />
-                  <h3 className="text-xl font-semibold font-pixel text-white">Latest Commit</h3>
+                  <GitBranch className="w-5 h-5 text-accent" />
+                  <h3 className="text-xl font-semibold text-white">Latest Commit</h3>
                 </div>
                 {loading ? (
                   <div>Checking GitHub...</div>
@@ -354,8 +354,8 @@ const ContactSection: React.FC = () => {
               {/* Currently Reading */}
               <div className="text-center md:text-left" style={{ color: '#9199A6' }}>
                 <div className="flex items-center justify-center md:justify-start gap-2 mb-6">
-                  <Book className="w-5 h-5 text-blue-400" />
-                  <h3 className="text-xl font-semibold font-pixel text-white">Currently Reading</h3>
+                  <Book className="w-5 h-5 text-accent" />
+                  <h3 className="text-xl font-semibold text-white">Currently Reading</h3>
                 </div>
                 {book ? (
                   <div className="flex items-start gap-4 justify-center md:justify-start">
@@ -399,41 +399,71 @@ const ContactSection: React.FC = () => {
               className="text-center"
               style={{ color: '#9199A6' }}
             >
-              <h3 className="text-2xl font-semibold font-pixel text-white mb-8">Get in touch</h3>
-              <div className="flex justify-center gap-8">
-                <a
+              <h3 className="text-2xl font-semibold text-white mb-8">Get in touch</h3>
+              <div className="flex flex-wrap justify-center gap-6 sm:gap-8">
+                <motion.a
                   href="https://github.com/devleo10"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex flex-col items-center gap-3 hover:text-white transition-all duration-300"
+                  whileHover={{ scale: 1.1, y: -4 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="group flex flex-col items-center gap-3 hover:text-accent transition-all duration-300"
                 >
-                  <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-colors">
-                    <Github className="w-6 h-6" />
+                  <div className="w-14 h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-accent/50 group-hover:bg-accent/10 transition-all duration-300">
+                    <Github className="w-6 h-6 text-white/70 group-hover:text-accent group-hover:drop-shadow-[0_0_8px_rgba(0,217,255,0.6)] transition-all duration-300" />
                   </div>
-                  <span className="text-sm font-medium">GitHub</span>
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/mehbub-alam-1b7b2b1b2/"
+                  <span className="text-sm font-medium text-white/70 group-hover:text-accent transition-colors">GitHub</span>
+                </motion.a>
+                <motion.a
+                  href="https://linkedin.com/in/leoxakash"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex flex-col items-center gap-3 hover:text-white transition-all duration-300"
+                  whileHover={{ scale: 1.1, y: -4 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="group flex flex-col items-center gap-3 hover:text-accent transition-all duration-300"
                 >
-                  <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-colors">
-                    <span className="w-6 h-6 flex items-center justify-center bg-blue-600 rounded text-sm font-bold text-white">in</span>
+                  <div className="w-14 h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-accent/50 group-hover:bg-accent/10 transition-all duration-300">
+                    <Linkedin className="w-6 h-6 text-white/70 group-hover:text-accent group-hover:drop-shadow-[0_0_8px_rgba(0,217,255,0.6)] transition-all duration-300" />
                   </div>
-                  <span className="text-sm font-medium">LinkedIn</span>
-                </a>
-                <a
+                  <span className="text-sm font-medium text-white/70 group-hover:text-accent transition-colors">LinkedIn</span>
+                </motion.a>
+                <motion.a
                   href="https://twitter.com/_devleo10"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex flex-col items-center gap-3 hover:text-white transition-all duration-300"
+                  whileHover={{ scale: 1.1, y: -4 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="group flex flex-col items-center gap-3 hover:text-accent transition-all duration-300"
                 >
-                  <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-colors">
-                    <span className="w-6 h-6 flex items-center justify-center bg-black rounded text-sm font-bold text-white">𝕏</span>
+                  <div className="w-14 h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-accent/50 group-hover:bg-accent/10 transition-all duration-300">
+                    <span className="w-6 h-6 flex items-center justify-center text-white/70 group-hover:text-accent group-hover:drop-shadow-[0_0_8px_rgba(0,217,255,0.6)] transition-all duration-300 font-bold">𝕏</span>
                   </div>
-                  <span className="text-sm font-medium">Twitter</span>
-                </a>
+                  <span className="text-sm font-medium text-white/70 group-hover:text-accent transition-colors">X</span>
+                </motion.a>
+                <motion.a
+                  href="https://instagram.com/semicolonfella"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1, y: -4 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="group flex flex-col items-center gap-3 hover:text-accent transition-all duration-300"
+                >
+                  <div className="w-14 h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-accent/50 group-hover:bg-accent/10 transition-all duration-300">
+                    <Instagram className="w-6 h-6 text-white/70 group-hover:text-accent group-hover:drop-shadow-[0_0_8px_rgba(0,217,255,0.6)] transition-all duration-300" />
+                  </div>
+                  <span className="text-sm font-medium text-white/70 group-hover:text-accent transition-colors">Instagram</span>
+                </motion.a>
+                <motion.a
+                  href="mailto:mehbubwork@gmail.com"
+                  whileHover={{ scale: 1.1, y: -4 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="group flex flex-col items-center gap-3 hover:text-accent transition-all duration-300"
+                >
+                  <div className="w-14 h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-accent/50 group-hover:bg-accent/10 transition-all duration-300">
+                    <Mail className="w-6 h-6 text-white/70 group-hover:text-accent group-hover:drop-shadow-[0_0_8px_rgba(0,217,255,0.6)] transition-all duration-300" />
+                  </div>
+                  <span className="text-sm font-medium text-white/70 group-hover:text-accent transition-colors">Email</span>
+                </motion.a>
               </div>
             </motion.div>
 

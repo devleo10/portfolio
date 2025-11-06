@@ -185,11 +185,14 @@ export function IconCloud({ images }: IconCloudProps) {
                     <img
                       src={imageUrl || "/placeholder.svg"}
                       alt={`tech-${index}`}
-                      className="w-8 h-8 opacity-90 hover:opacity-100"
+                      className="w-8 h-8 opacity-90 hover:opacity-100 transition-all duration-300"
                       onError={() => handleImageError(index)}
                       style={{
-                        filter: "drop-shadow(0 0 8px rgba(255,255,255,0.15))",
+                        filter: isHovered 
+                          ? "drop-shadow(0 0 12px rgba(0, 217, 255, 0.6))" 
+                          : "drop-shadow(0 0 8px rgba(255,255,255,0.15))",
                         backfaceVisibility: "hidden",
+                        transform: isHovered ? "scale(1.2)" : "scale(1)",
                       }}
                     />
                   </div>
@@ -206,7 +209,7 @@ export function IconCloud({ images }: IconCloudProps) {
 
       {hoveredTech && (
   <div
-    className="fixed px-3 py-1 text-sm font-medium bg-black/80 text-white rounded-md pointer-events-none"
+    className="fixed px-3 py-1 text-sm font-medium bg-black/90 border border-accent/30 text-accent rounded-md pointer-events-none shadow-accent"
     style={{
       top: "50%",
       left: "50%",

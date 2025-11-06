@@ -172,6 +172,12 @@
   font-size: 1.1rem;
   text-shadow: 0 1px 8px rgba(0,0,0,0.18);
 }
+.button:hover .content {
+  box-shadow:
+    0 2px 12px 0 rgba(0, 217, 255, 0.2),
+    inset -2px 12px 11px -5px #181818,
+    inset 1px -3px 11px 0px rgb(0 0 0 / 65%);
+}
 .path {
   position: absolute;
   z-index: 12;
@@ -194,6 +200,7 @@
 }
 .button:hover .wrap {
   transform: translate(8px, -8px);
+  box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
 }
 .button:hover .outline {
   opacity: 1;

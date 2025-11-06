@@ -103,7 +103,7 @@ const otherProjects: OtherProject[] = [
 const Projects: React.FC = () => {
   return (
     <PageWrapper>
-      <section className="py-8 relative overflow-hidden" id="projects">
+      <section className="py-16 sm:py-24 relative overflow-hidden" id="projects">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Main Projects Section */}
@@ -123,10 +123,10 @@ const Projects: React.FC = () => {
           >
             Featured Work
           </motion.span>
-          <h2 className="text-5xl sm:text-6xl font-bold font-pixel text-white mb-6 tracking-tight">
+          <h2 className="text-5xl sm:text-6xl font-bold text-white mb-6 tracking-tight">
             Main Projects
           </h2>
-          <div className="w-32 h-px bg-white/30 mx-auto" />
+          <div className="w-32 h-px bg-gradient-to-r from-transparent via-accent to-transparent mx-auto" />
         </motion.div>
 
   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-16 md:mb-32">
@@ -216,10 +216,10 @@ const Projects: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h3 className="text-3xl font-bold font-pixel text-white mb-6 tracking-tight">
+          <h3 className="text-3xl font-bold text-white mb-6 tracking-tight">
             Other Works
           </h3>
-          <div className="w-24 h-px bg-white/20 mx-auto" />
+          <div className="w-24 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent mx-auto" />
         </motion.div>
 
   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 max-w-4xl mx-auto">

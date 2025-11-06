@@ -47,7 +47,7 @@ const Hero: React.FC = () => {
   }, [displayed, direction, nameIndex]);
 
   return (
-    <div className="min-h-screen w-full bg-black relative overflow-hidden">
+    <div className="min-h-screen w-full bg-black relative overflow-hidden" id="hero">
       {/* Free-flowing salt particles background */}
       <SaltParticles />
       {/* Subtle monochrome atmospheric mist */}
@@ -286,7 +286,7 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            <p className="text-2xl sm:text-3xl mb-10 font-light tracking-wide" style={{ color: '#9199A6' }}>
+            <p className="text-2xl sm:text-3xl mb-6 font-light tracking-wide text-gray-400">
               Full‑Stack Engineer & Low‑Key Lunatic
             </p>
           </motion.div>
@@ -295,7 +295,7 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.65 }}
           >
-            <p className="text-lg mb-12 max-w-3xl mx-auto leading-relaxed" style={{ color: '#9199A6' }}>
+            <p className="text-lg sm:text-xl mb-16 max-w-3xl mx-auto leading-relaxed text-gray-500">
               I build things, I break things, I learn fast.
             </p>
           </motion.div>
