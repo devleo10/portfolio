@@ -24,6 +24,7 @@ export const techIconMap: Record<string, LucideIcon> = {
   "Vite": Rocket,
   "Next.js": Globe,
   "Node.js": Server,
+  "Express": Server,
   "MongoDB": Database,
   "PostgreSQL": Database,
   "Chart.js": BarChart2,

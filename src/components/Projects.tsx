@@ -53,6 +53,12 @@ const mainProjects: MainProject[] = [
 
 const otherProjects: OtherProject[] = [
   {
+    title: "MCP Search Server",
+    description: "A minimal, fast Model Context Protocol (MCP) server that exposes a single tool: search_file for searching within files. Designed to work with Cursor and Claude Desktop, plus a small CLI for direct use.",
+    tech: ["TypeScript", "Express", "Node.js"],
+    url: "https://github.com/devleo10/mcp-search-server",
+  },
+  {
     title: "Hirebot — Autofill Chrome Extension",
     description: "A Chrome extension that helps you save and autofill Q/A and input fields for job and internship applications, streamlining repetitive form-filling tasks.",
     tech: ["JavaScript", "Chrome Extension"],
