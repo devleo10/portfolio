@@ -12,7 +12,7 @@ export async function GET(request) {
             return NextResponse.json({ error: 'username is required' }, { status: 400 });
         }
 
-        const token = process.env.GITHUB_TOKEN;
+        const token = process.env.VITE_GITHUB_TOKEN;
 
         if (!token) {
             return NextResponse.json({ error: 'GitHub token not configured' }, { status: 500 });
