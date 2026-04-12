@@ -15,7 +15,7 @@ const jetBrainsMono = JetBrains_Mono({
 
 export const metadata = {
   title: "Mehbub — Portfolio",
-  description: "Full-stack engineer building scalable web apps, microservices, and clean interfaces.",
+  description: "Full-stack engineer building products with Next.js, Node.js, PostgreSQL, Redis, and AWS. Kolkata, India.",
 };
 
 export default function RootLayout({ children }) {

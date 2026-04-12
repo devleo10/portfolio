@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { motion } from 'motion/react'
-import { Code2, MapPin, Mail, Clock, Globe, User2 } from 'lucide-react'
+import { Code2, MapPin, Mail, Clock, Globe, User2, Phone } from 'lucide-react'
 import { FileText } from 'lucide-react'
 import { SiGithub, SiX } from "react-icons/si";
 import { FaLinkedin } from "react-icons/fa";
@@ -43,7 +43,7 @@ export default function Hero() {
                 />
                 <div className="flex flex-col md:gap-1 gap-0.5 flex-1">
                     <div className="flex items-start sm:items-center gap-2 sm:gap-3 flex-col sm:flex-row">
-                        <h1 className="text-2xl font-inter sm:text-3xl md:text-4xl font-semibold tracking-normal">Mehbub</h1>
+                        <h1 className="text-2xl font-inter sm:text-3xl md:text-4xl font-semibold tracking-normal leading-tight">Mehbub</h1>
                         <div className="hidden md:flex items-center gap-1.5 px-2 py-1 rounded-full bg-muted/80 border border-border backdrop-blur-sm">
                             <span className="relative flex h-2 w-2">
                                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-40" />
@@ -75,7 +75,7 @@ export default function Hero() {
                                 <MapPin className="w-3.5 h-3.5 text-muted-foreground transition-transform group-hover/row:scale-110" strokeWidth={1.5} />
                             </span>
                             <div className="flex items-center gap-1.5 md:gap-2">
-                                <span className="text-xs text-muted-foreground md:text-sm">India</span>
+                                <span className="text-xs text-muted-foreground md:text-sm">Kolkata, West Bengal</span>
                             </div>
                         </div>
 
@@ -86,6 +86,23 @@ export default function Hero() {
                             <div className="flex items-center gap-1.5 md:gap-2">
                                 <a href="mailto:mehbubwork@gmail.com" target="_blank" className="text-xs text-muted-foreground transition-all ease-in-out hover:text-foreground hover:underline md:text-sm">mehbubwork@gmail.com</a>
                             </div>
+                        </div>
+
+                        <div className="flex items-center gap-2 md:gap-3 group/row">
+                            <span className="flex h-6 w-6 items-center justify-center rounded-lg border border-border bg-muted/50 md:h-[1.6rem] md:w-[1.6rem] transition-colors group-hover/row:border-border group-hover/row:bg-muted">
+                                <Phone className="w-3.5 h-3.5 text-muted-foreground transition-transform group-hover/row:scale-110" strokeWidth={1.5} />
+                            </span>
+                            <div className="flex items-center gap-1.5 md:gap-2">
+                                <a href="tel:+918617813516" className="text-xs text-muted-foreground transition-all ease-in-out hover:text-foreground hover:underline md:text-sm">+91 86178 13516</a>
+                            </div>
+                        </div>
+
+                        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 pl-8 md:hidden">
+                            <a href="https://github.com/devleo10" target="_blank" rel="noopener noreferrer" className="text-xs text-muted-foreground hover:text-foreground hover:underline">GitHub</a>
+                            <span className="text-muted-foreground/40">·</span>
+                            <a href="https://linkedin.com/in/leoxakash" target="_blank" rel="noopener noreferrer" className="text-xs text-muted-foreground hover:text-foreground hover:underline">LinkedIn</a>
+                            <span className="text-muted-foreground/40">·</span>
+                            <a href="https://devleo.in" target="_blank" rel="noopener noreferrer" className="text-xs text-muted-foreground hover:text-foreground hover:underline">Portfolio</a>
                         </div>
                     </div>
 
@@ -104,7 +121,11 @@ export default function Hero() {
                                 <Globe className="w-3.5 h-3.5 text-muted-foreground transition-transform group-hover/row:scale-110" strokeWidth={1.5} />
                             </span>
                             <div className="flex items-center gap-1.5 md:gap-2">
-                                <a href="https://github.com/devleo10" target="_blank" className="text-xs text-muted-foreground transition-all ease-in-out hover:text-foreground hover:underline md:text-sm">github.com/devleo10</a>
+                                <a href="https://github.com/devleo10" target="_blank" rel="noopener noreferrer" className="text-xs text-muted-foreground transition-all ease-in-out hover:text-foreground hover:underline md:text-sm">GitHub</a>
+                                <span className="text-muted-foreground/40">·</span>
+                                <a href="https://linkedin.com/in/leoxakash" target="_blank" rel="noopener noreferrer" className="text-xs text-muted-foreground transition-all ease-in-out hover:text-foreground hover:underline md:text-sm">LinkedIn</a>
+                                <span className="text-muted-foreground/40">·</span>
+                                <a href="https://devleo.in" target="_blank" rel="noopener noreferrer" className="text-xs text-muted-foreground transition-all ease-in-out hover:text-foreground hover:underline md:text-sm">Portfolio</a>
                             </div>
                         </div>
 
@@ -122,7 +143,7 @@ export default function Hero() {
 
             <motion.div variants={item} className="mb-5 md:mb-8">
                 <p className="text-sm leading-loose text-muted-foreground sm:text-[15px] sm:leading-[2.3]">
-                    I build products with{" "}
+                    I build products end to end with{" "}
                     <TechBadge
                         href="https://www.typescriptlang.org/"
                         icon="/icons/typescript.svg"
@@ -165,13 +186,35 @@ export default function Hero() {
                     </TechBadge>
                     ,{" "}
                     <TechBadge
+                        href="https://www.python.org/"
+                        icon="/icons/python.svg"
+                        className="bg-amber-500/10 text-amber-400"
+                    >
+                        Python
+                    </TechBadge>
+                    ,{" "}
+                    <TechBadge
                         href="https://www.postgresql.org/"
                         icon="/icons/postgresql.svg"
                         className="bg-slate-500/10 text-slate-300"
                     >
                         PostgreSQL
                     </TechBadge>
-                    , and{" "}
+                    ,{" "}
+                    <TechBadge
+                        href="https://redis.io/"
+                        className="bg-red-500/10 text-red-400"
+                    >
+                        Redis
+                    </TechBadge>
+                    ,{" "}
+                    <TechBadge
+                        href="https://www.prisma.io/"
+                        className="bg-slate-500/10 text-slate-300"
+                    >
+                        Prisma
+                    </TechBadge>
+                    ,{" "}
                     <TechBadge
                         href="https://supabase.com/"
                         icon="/icons/supabase.svg"
@@ -179,7 +222,22 @@ export default function Hero() {
                     >
                         Supabase
                     </TechBadge>
-                    . I care about scalable architecture, clear UX, and shipping things that stay useful after launch.
+                    , and{" "}
+                    <TechBadge
+                        href="https://aws.amazon.com/"
+                        className="bg-amber-500/10 text-amber-300"
+                    >
+                        AWS
+                    </TechBadge>
+                    {" "}
+                    (SES, S3, RDS, ElastiCache). I design reliable backends—queues, webhooks, and clear APIs—and ship with{" "}
+                    <TechBadge
+                        href="https://www.docker.com/"
+                        className="bg-sky-500/10 text-sky-300"
+                    >
+                        Docker
+                    </TechBadge>
+                    . I care about performance under load, observability, and UX that still makes sense when something breaks.
                 </p>
             </motion.div>
 
