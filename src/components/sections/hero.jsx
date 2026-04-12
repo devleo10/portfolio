@@ -42,9 +42,9 @@ export default function Hero() {
                     transition={{ type: 'spring', stiffness: 400, damping: 24 }}
                 />
                 <div className="flex flex-col md:gap-1 gap-0.5 flex-1">
-                    <div className="flex items-start sm:items-center gap-2 sm:gap-3 flex-col sm:flex-row">
+                    <div className="flex flex-wrap items-center gap-y-2 gap-x-2 sm:gap-3">
                         <h1 className="text-2xl font-inter sm:text-3xl md:text-4xl font-semibold tracking-normal leading-tight">Mehbub</h1>
-                        <div className="hidden md:flex items-center gap-1.5 px-2 py-1 rounded-full bg-muted/80 border border-border backdrop-blur-sm">
+                        <div className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-muted/80 border border-border backdrop-blur-sm w-fit">
                             <span className="relative flex h-2 w-2">
                                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-40" />
                                 <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
@@ -52,8 +52,16 @@ export default function Hero() {
                             <span className="text-xs font-inter text-muted-foreground">Open to opportunities</span>
                         </div>
                     </div>
-                    <p className="text-muted-foreground text-sm sm:text-lg">
-                        Full-Stack Engineer
+                    <p className="text-sm sm:text-base text-muted-foreground tracking-wide">
+                        <span className="text-foreground/85">Thinker</span>
+                        <span className="mx-2 text-muted-foreground/45 dark:text-muted-foreground/50" aria-hidden>
+                            ·
+                        </span>
+                        <span className="text-foreground/85">Builder</span>
+                        <span className="mx-2 text-muted-foreground/45 dark:text-muted-foreground/50" aria-hidden>
+                            ·
+                        </span>
+                        <span className="text-foreground/85">Wanderer</span>
                     </p>
                 </div>
             </motion.div>
