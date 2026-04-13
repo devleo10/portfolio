@@ -1,18 +1,19 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { usePathname } from 'next/navigation'
 
-/**
- * Ctrl+K / ⌘K → scroll to contact and focus first field (similar to quick actions on portfolio sites).
- */
 export default function KeyboardHint() {
   const [modKey, setModKey] = useState('Ctrl')
+  const pathname = usePathname()
+  const isHome = pathname === '/'
 
   useEffect(() => {
     setModKey(/Mac|iPhone|iPad|iPod/i.test(navigator.userAgent) ? '⌘' : 'Ctrl')
   }, [])
 
   useEffect(() => {
+    if (!isHome) return
     const onKey = (e) => {
       if (!(e.key === 'k' || e.key === 'K')) return
       if (!(e.metaKey || e.ctrlKey)) return
@@ -20,14 +21,12 @@ export default function KeyboardHint() {
       e.preventDefault()
       const section = document.getElementById('contact')
       section?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      window.setTimeout(() => {
-        const input = section?.querySelector('input[name="name"]')
-        if (input && 'focus' in input) input.focus()
-      }, 380)
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [])
+  }, [isHome])
+
+  if (!isHome) return null
 
   return (
     <div

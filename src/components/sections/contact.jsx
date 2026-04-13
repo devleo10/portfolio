@@ -13,8 +13,7 @@ export default function Contact() {
                 <div className="mb-5">
                     <h3 className="mb-1.5 text-lg font-medium text-foreground">Get in Touch</h3>
                     <p className="text-sm leading-relaxed text-muted-foreground">
-                        Happy to chat — no pressure. If something here resonated, pick whatever channel you like; I read everything
-                        and reply when I can.
+                        Wanna have a chat? Pick whatever channel you like — I read everything and reply when I can.
                     </p>
                 </div>
                 <div className="space-y-3">
