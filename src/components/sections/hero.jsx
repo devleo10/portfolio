@@ -1,7 +1,7 @@
 'use client'
 
-import React from 'react'
-import { motion } from 'motion/react'
+import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'motion/react'
 import { Code2, MapPin, Mail, Clock, Globe, User2, Phone } from 'lucide-react'
 import { FileText } from 'lucide-react'
 import { SiGithub, SiX } from "react-icons/si";
@@ -26,6 +26,8 @@ const item = {
 }
 
 export default function Hero() {
+    const [expanded, setExpanded] = useState(false)
+
     return (
         <motion.section
             variants={container}
@@ -151,101 +153,50 @@ export default function Hero() {
 
             <motion.div variants={item} className="mb-5 md:mb-8">
                 <p className="text-sm leading-loose text-muted-foreground sm:text-[15px] sm:leading-[2.3]">
-                    I build products end to end with{" "}
-                    <TechBadge
-                        href="https://www.typescriptlang.org/"
-                        icon="/icons/typescript.svg"
-                        className="bg-blue-500/10 text-blue-400"
+                    I build products end to end — from UI to infrastructure — and care about reliability, performance, and UX that still makes sense when something breaks.{" "}
+                    <AnimatePresence initial={false}>
+                        {expanded && (
+                            <motion.span
+                                key="expanded"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.25 }}
+                            >
+                                On the frontend:{" "}
+                                <TechBadge href="https://www.typescriptlang.org/" icon="/icons/typescript.svg" className="bg-blue-500/10 text-blue-400">TypeScript</TechBadge>
+                                ,{" "}
+                                <TechBadge href="https://react.dev/" icon="/icons/react.svg" className="bg-cyan-500/10 text-cyan-400">React</TechBadge>
+                                ,{" "}
+                                <TechBadge href="https://nextjs.org/" icon="/icons/nextjs.svg" className="bg-primary/10 text-foreground" darkInvert>Next.js</TechBadge>
+                                , and{" "}
+                                <TechBadge href="https://tailwindcss.com/" icon="/icons/tailwindcss.svg" className="bg-sky-500/10 text-sky-400">Tailwind CSS</TechBadge>
+                                . On the backend:{" "}
+                                <TechBadge href="https://nodejs.org/" icon="/icons/nodejs.svg" className="bg-green-500/10 text-green-400">Node.js</TechBadge>
+                                ,{" "}
+                                <TechBadge href="https://www.python.org/" icon="/icons/python.svg" className="bg-amber-500/10 text-amber-400">Python</TechBadge>
+                                ,{" "}
+                                <TechBadge href="https://www.postgresql.org/" icon="/icons/postgresql.svg" className="bg-slate-500/10 text-slate-300">PostgreSQL</TechBadge>
+                                ,{" "}
+                                <TechBadge href="https://redis.io/" className="bg-red-500/10 text-red-400">Redis</TechBadge>
+                                ,{" "}
+                                <TechBadge href="https://www.prisma.io/" className="bg-slate-500/10 text-slate-300">Prisma</TechBadge>
+                                ,{" "}
+                                <TechBadge href="https://supabase.com/" icon="/icons/supabase.svg" className="bg-emerald-500/10 text-emerald-400">Supabase</TechBadge>
+                                , and{" "}
+                                <TechBadge href="https://aws.amazon.com/" className="bg-amber-500/10 text-amber-300">AWS</TechBadge>
+                                {" "}(SES, S3, RDS, ElastiCache). I design reliable backends — queues, webhooks, clear APIs — and ship with{" "}
+                                <TechBadge href="https://www.docker.com/" className="bg-sky-500/10 text-sky-300">Docker</TechBadge>
+                                .{" "}
+                            </motion.span>
+                        )}
+                    </AnimatePresence>
+                    <button
+                        onClick={() => setExpanded(v => !v)}
+                        className="inline text-xs text-muted-foreground/60 hover:text-muted-foreground underline underline-offset-2 transition-colors"
                     >
-                        TypeScript
-                    </TechBadge>
-                    ,{" "}
-                    <TechBadge
-                        href="https://react.dev/"
-                        icon="/icons/react.svg"
-                        className="bg-cyan-500/10 text-cyan-400"
-                    >
-                        React
-                    </TechBadge>
-                    ,{" "}
-                    <TechBadge
-                        href="https://nextjs.org/"
-                        icon="/icons/nextjs.svg"
-                        className="bg-primary/10 text-foreground"
-                        darkInvert
-                    >
-                        Next.js
-                    </TechBadge>
-                    , and{" "}
-                    <TechBadge
-                        href="https://tailwindcss.com/"
-                        icon="/icons/tailwindcss.svg"
-                        className="bg-sky-500/10 text-sky-400"
-                    >
-                        Tailwind CSS
-                    </TechBadge>
-                    . On the backend I reach for{" "}
-                    <TechBadge
-                        href="https://nodejs.org/"
-                        icon="/icons/nodejs.svg"
-                        className="bg-green-500/10 text-green-400"
-                    >
-                        Node.js
-                    </TechBadge>
-                    ,{" "}
-                    <TechBadge
-                        href="https://www.python.org/"
-                        icon="/icons/python.svg"
-                        className="bg-amber-500/10 text-amber-400"
-                    >
-                        Python
-                    </TechBadge>
-                    ,{" "}
-                    <TechBadge
-                        href="https://www.postgresql.org/"
-                        icon="/icons/postgresql.svg"
-                        className="bg-slate-500/10 text-slate-300"
-                    >
-                        PostgreSQL
-                    </TechBadge>
-                    ,{" "}
-                    <TechBadge
-                        href="https://redis.io/"
-                        className="bg-red-500/10 text-red-400"
-                    >
-                        Redis
-                    </TechBadge>
-                    ,{" "}
-                    <TechBadge
-                        href="https://www.prisma.io/"
-                        className="bg-slate-500/10 text-slate-300"
-                    >
-                        Prisma
-                    </TechBadge>
-                    ,{" "}
-                    <TechBadge
-                        href="https://supabase.com/"
-                        icon="/icons/supabase.svg"
-                        className="bg-emerald-500/10 text-emerald-400"
-                    >
-                        Supabase
-                    </TechBadge>
-                    , and{" "}
-                    <TechBadge
-                        href="https://aws.amazon.com/"
-                        className="bg-amber-500/10 text-amber-300"
-                    >
-                        AWS
-                    </TechBadge>
-                    {" "}
-                    (SES, S3, RDS, ElastiCache). I design reliable backends—queues, webhooks, and clear APIs—and ship with{" "}
-                    <TechBadge
-                        href="https://www.docker.com/"
-                        className="bg-sky-500/10 text-sky-300"
-                    >
-                        Docker
-                    </TechBadge>
-                    . I care about performance under load, observability, and UX that still makes sense when something breaks.
+                        {expanded ? "less" : "more"}
+                    </button>
                 </p>
             </motion.div>
 

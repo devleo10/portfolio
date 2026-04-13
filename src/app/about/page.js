@@ -17,7 +17,11 @@ export default function About() {
 
             <div className='mt-6 flex flex-col gap-6 text-muted-foreground'>
                 <p>
-                    I&apos;m Mehbub — based in Kolkata — a full-stack engineer who likes shipping products that stay maintainable: TypeScript and React on the front, Node and PostgreSQL on the back, Redis and AWS (including RDS and ElastiCache) when things need to scale. I care about the interface too—flows that stay understandable when the system is under stress.
+                    I&apos;m Mehbub — based in Kolkata — a full-stack engineer who builds products end to end and cares about keeping them maintainable long after launch.
+                </p>
+
+                <p>
+                    On the frontend I work with TypeScript, React, Next.js, and Tailwind CSS. On the backend I reach for Node.js, Python, PostgreSQL, Redis, Prisma, Supabase, and AWS — SES, S3, RDS, and ElastiCache. I design reliable backends: queues, webhooks, and clear APIs. I ship with Docker and care deeply about performance under load, observability, and UX that still makes sense when something breaks.
                 </p>
 
                 <p>
@@ -25,7 +29,7 @@ export default function About() {
                 </p>
 
                 <p>
-                    On the front it&apos;s Next.js, React, Tailwind, and ShadCN; on the back Node, Express, Flask, and PostgreSQL—with Bun, Turborepo, and Vercel in the mix when shipping fast. Outside of code, I like travel, good books, and the occasional over-engineered side project.
+                    Outside of code, I like travel, good books, and the occasional over-engineered side project.
                 </p>
 
                 <h2 className='text-2xl font-bold mt-8 text-foreground'>Let&apos;s connect</h2>
