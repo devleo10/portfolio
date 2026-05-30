@@ -16,7 +16,11 @@ const jetBrainsMono = JetBrains_Mono({
 
 export const metadata = {
   title: "Mehbub — Portfolio",
-  description: "Mehbub — building products with Next.js, Node.js, PostgreSQL, Redis, and AWS. Kolkata, India.",
+  description: "Mehbub — FSE @ House of EdTech, GSoC '26 @ UC OSPO. Building with Next.js, Node.js, PostgreSQL, Redis, and AWS. Kolkata, India.",
+  icons: {
+    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    apple: [{ url: "/apple-icon.svg", type: "image/svg+xml" }],
+  },
 };
 
 export default function RootLayout({ children }) {

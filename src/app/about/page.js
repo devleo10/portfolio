@@ -17,11 +17,15 @@ export default function About() {
 
             <div className='mt-6 flex flex-col gap-6 text-muted-foreground'>
                 <p>
-                    I&apos;m Mehbub — based in Kolkata — a full-stack engineer who builds products end to end and cares about keeping them maintainable long after launch.
+                    I&apos;m Mehbub — based in Kolkata — a final-year B.Tech student and FSE who builds products end to end and cares about keeping them maintainable long after launch.
                 </p>
 
                 <p>
-                    On the frontend I work with TypeScript, React, Next.js, and Tailwind CSS. On the backend I reach for Node.js, Python, PostgreSQL, Redis, Prisma, Supabase, and AWS — SES, S3, RDS, and ElastiCache. I design reliable backends: queues, webhooks, and clear APIs. I ship with Docker and care deeply about performance under load, observability, and UX that still makes sense when something breaks.
+                    I&apos;m a GSoC &apos;26 contributor with UC OSPO, building a dynamic sensor dashboard for environmental data, and an FSE at House of EdTech (remote) where I work on billing systems, real-time market integrations, and production infrastructure. I&apos;m also active in open source — from maintaining projects in programs like Apertre to shipping side projects like L-Mic and ClueFind.
+                </p>
+
+                <p>
+                    On the frontend I work with TypeScript, React, Next.js, and Tailwind CSS. On the backend I reach for Node.js, Python, PostgreSQL, Redis, Prisma, Supabase, and AWS. Comfortable across the stack and focused on building things that are simple to ship and easy to maintain — with an eye on performance and UX that still makes sense when something breaks.
                 </p>
 
                 <p>

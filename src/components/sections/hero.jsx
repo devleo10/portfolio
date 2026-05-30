@@ -76,7 +76,7 @@ export default function Hero() {
                                 <Code2 className="w-3.5 h-3.5 text-muted-foreground transition-transform group-hover/row:scale-110" strokeWidth={1.5} />
                             </span>
                             <div className="flex items-center gap-1.5 md:gap-2">
-                                <span className="text-xs text-muted-foreground md:text-sm">Software Development Engineer</span>
+                                <span className="text-xs text-muted-foreground md:text-sm">FSE @ House of EdTech · GSoC &apos;26 @ UC OSPO</span>
                             </div>
                         </div>
 
@@ -153,7 +153,7 @@ export default function Hero() {
 
             <motion.div variants={item} className="mb-5 md:mb-8">
                 <p className="text-sm leading-loose text-muted-foreground sm:text-[15px] sm:leading-[2.3]">
-                    I build products end to end — from UI to infrastructure — and care about reliability, performance, and UX that still makes sense when something breaks.{" "}
+                    Final-year CS student and Full Stack Engineer — I build products end to end, from UI to infrastructure, and care about reliability, performance, and UX that still makes sense when something breaks. Currently contributing to open source through GSoC and exploring agentic AI.{" "}
                     <AnimatePresence initial={false}>
                         {expanded && (
                             <motion.span
@@ -166,17 +166,17 @@ export default function Hero() {
                                 On the frontend:{" "}
                                 <TechBadge href="https://www.typescriptlang.org/" icon="/icons/typescript.svg" className="bg-blue-500/10 text-blue-400">TypeScript</TechBadge>
                                 ,{" "}
-                                <TechBadge href="https://react.dev/" icon="/icons/react.svg" className="bg-cyan-500/10 text-cyan-400">React</TechBadge>
+                                <TechBadge href="https://react.dev/" className="bg-cyan-500/10 text-cyan-400">React</TechBadge>
                                 ,{" "}
                                 <TechBadge href="https://nextjs.org/" icon="/icons/nextjs.svg" className="bg-primary/10 text-foreground" darkInvert>Next.js</TechBadge>
                                 , and{" "}
                                 <TechBadge href="https://tailwindcss.com/" icon="/icons/tailwindcss.svg" className="bg-sky-500/10 text-sky-400">Tailwind CSS</TechBadge>
                                 . On the backend:{" "}
-                                <TechBadge href="https://nodejs.org/" icon="/icons/nodejs.svg" className="bg-green-500/10 text-green-400">Node.js</TechBadge>
+                                <TechBadge href="https://nodejs.org/" className="bg-green-500/10 text-green-400">Node.js</TechBadge>
                                 ,{" "}
-                                <TechBadge href="https://www.python.org/" icon="/icons/python.svg" className="bg-amber-500/10 text-amber-400">Python</TechBadge>
+                                <TechBadge href="https://flask.palletsprojects.com/" className="bg-slate-500/10 text-slate-300">Flask</TechBadge>
                                 ,{" "}
-                                <TechBadge href="https://www.postgresql.org/" icon="/icons/postgresql.svg" className="bg-slate-500/10 text-slate-300">PostgreSQL</TechBadge>
+                                <TechBadge href="https://www.postgresql.org/" className="bg-slate-500/10 text-slate-300">PostgreSQL</TechBadge>
                                 ,{" "}
                                 <TechBadge href="https://redis.io/" className="bg-red-500/10 text-red-400">Redis</TechBadge>
                                 ,{" "}
@@ -185,9 +185,7 @@ export default function Hero() {
                                 <TechBadge href="https://supabase.com/" icon="/icons/supabase.svg" className="bg-emerald-500/10 text-emerald-400">Supabase</TechBadge>
                                 , and{" "}
                                 <TechBadge href="https://aws.amazon.com/" className="bg-amber-500/10 text-amber-300">AWS</TechBadge>
-                                {" "}(SES, S3, RDS, ElastiCache). I design reliable backends — queues, webhooks, clear APIs — and ship with{" "}
-                                <TechBadge href="https://www.docker.com/" className="bg-sky-500/10 text-sky-300">Docker</TechBadge>
-                                .{" "}
+                                . Comfortable across the stack — from interfaces to infrastructure — and focused on building things that are simple to ship and easy to maintain.{" "}
                             </motion.span>
                         )}
                     </AnimatePresence>

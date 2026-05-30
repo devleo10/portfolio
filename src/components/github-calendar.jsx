@@ -51,6 +51,8 @@ export default function GithubCalendar({ username }) {
 
     const weeks = calendarData.weeks || []
     const total = calendarData.totalContributions || 0
+    const hasHiddenContributions =
+        calendarData.hasHiddenContributions && (calendarData.restrictedContributionsCount ?? 0) > 0
     const firstMonth = new Date(weeks[0].contributionDays[0].date).toLocaleString('default', { month: 'short' })
     const minGridWidth = weeks.length * (MIN_CELL + CELL_GAP)
 
@@ -132,9 +134,14 @@ export default function GithubCalendar({ username }) {
                 </div>
             </div>
 
-            <div className="flex items-center justify-between font-mono text-[11px] text-muted-foreground">
+            <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between font-mono text-[11px] text-muted-foreground">
                 <span>
-                    <strong className="font-semibold text-foreground">{total}</strong> contributions last year
+                    <strong className="font-semibold text-foreground">{total.toLocaleString()}</strong> contributions last year
+                    {hasHiddenContributions && (
+                        <span className="block sm:inline sm:ml-1 text-muted-foreground/70">
+                            · private/SSO commits not included (update API token)
+                        </span>
+                    )}
                 </span>
                 <div className="flex items-center gap-1.5">
                     <span>Less</span>

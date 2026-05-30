@@ -3,9 +3,24 @@ import React from 'react'
 export default function Experience() {
     const experiences = [
         {
-            title: 'Software Development Engineer',
+            title: 'Contributor',
+            company: 'Google Summer of Code — UC OSPO',
+            initials: 'GS',
+            location: 'Remote',
+            date: 'May 2026 – Aug 2026',
+            description:
+                'Building a dynamic sensor dashboard for DirtViz — drag-and-drop layouts, URL-shareable views, parallel data loading, and a derived metric equations engine.',
+            bullets: [
+                'Selected to build a dynamic sensor dashboard for DirtViz with drag-and-drop layouts, URL-shareable views, and parallel data loading for real environmental sensor streams.',
+                'Building a derived metric equations engine so users can define custom computed fields over raw sensor data without backend changes.',
+                'Stack: React, Flask, PostgreSQL.',
+            ],
+        },
+        {
+            title: 'Full Stack Engineer',
             company: 'House of EdTech',
-            location: 'Kolkata, India',
+            initials: 'HoE',
+            location: 'Remote',
             date: 'Oct 2025 – Present',
             description:
                 'Platform and backend work: async job workers, subscription billing, real-time integrations, secure webhooks, and AWS/Turborepo/Bun tooling.',
@@ -21,6 +36,7 @@ export default function Experience() {
         {
             title: 'Full-Stack Developer Intern',
             company: 'House of EdTech',
+            initials: 'HoE',
             location: 'Kolkata, India',
             date: 'Jul 2025 – Sep 2025',
             description:
@@ -36,6 +52,7 @@ export default function Experience() {
         {
             title: 'Project Maintainer',
             company: 'Apertre 2.0 (Open Source Program)',
+            initials: 'AP',
             location: 'Remote',
             date: 'Feb 2024 – Apr 2024',
             description: 'Open-source program coordination and code review across multiple repositories.',
@@ -47,7 +64,7 @@ export default function Experience() {
     ]
 
     return (
-        <section className="mt-20">
+        <section className="mt-20" id="experience">
             <h2 className="mb-4 text-xs uppercase tracking-widest text-muted-foreground">Experience</h2>
             <div className="flex flex-col gap-4">
                 {experiences.map((exp, idx) => (
@@ -58,7 +75,7 @@ export default function Experience() {
                         <div className="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 mb-4">
                             <div className="w-10 h-10 sm:w-12 sm:h-12 shrink-0 rounded-lg bg-transparent border border-border flex items-center justify-center overflow-hidden">
                                 <span className="text-xs font-semibold text-muted-foreground">
-                                    {exp.company === 'House of EdTech' ? 'HoE' : 'AP'}
+                                    {exp.initials}
                                 </span>
                             </div>
                             <div className="flex-1 min-w-0">

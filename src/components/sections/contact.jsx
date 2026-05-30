@@ -63,9 +63,6 @@ export default function Contact() {
                         <ArrowUpRight className="size-3.5 text-muted-foreground/50 transition-colors group-hover:text-muted-foreground" />
                     </a>
                 </div>
-                <div className="mt-5 border-t border-border/50 pt-4">
-                    <p className="text-[10px] text-muted-foreground/60">I usually reply within a day when possible.</p>
-                </div>
             </div>
         </section>
     )

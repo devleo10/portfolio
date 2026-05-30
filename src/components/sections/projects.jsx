@@ -8,6 +8,34 @@ import { RevealStagger, RevealItem } from '@/components/reveal'
 export default function Projects() {
     const projects = [
         {
+            title: 'L-Mic',
+            subtitle: 'Browser mic quality tester',
+            link: 'https://lmic.tech',
+            github: 'https://github.com/devleo10/L-Mic',
+            featured: true,
+            description:
+                'Lightweight web app to test microphone quality before meetings — real-time visualizer, input quality meter, and device switcher. No signup or install; open and talk. Built over a weekend with the Web Audio API.',
+            tags: ['TypeScript', 'Web Audio API', 'Vercel'],
+        },
+        {
+            title: 'MindGrid',
+            subtitle: 'Productivity workspace',
+            link: null,
+            github: 'https://github.com/devleo10/MindGrid',
+            description:
+                'Modern productivity workspace with AI assistance, calendar integration, gamification, and collaboration tools. Modular Next.js + TypeScript architecture built for extensibility.',
+            tags: ['Next.js', 'TypeScript', 'AI', 'Calendar'],
+        },
+        {
+            title: 'ClueFind',
+            subtitle: 'Developer portfolio platform',
+            link: 'https://cluefind.software',
+            github: 'https://github.com/devleo10/cluefind',
+            description:
+                'Portfolio platform for skills, projects, and achievements: AI profile builder, skill endorsements, GitHub integration, and customizable public profiles. Responsive UI with Next.js, Tailwind, and Radix UI; Prisma and PostgreSQL on the backend; Docker and CI/CD for deployments.',
+            tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Radix UI', 'Prisma', 'PostgreSQL'],
+        },
+        {
             title: 'Clinkr',
             subtitle: 'Modern link-in-bio SaaS',
             link: 'https://clinkr.live',
@@ -17,13 +45,22 @@ export default function Projects() {
             tags: ['React', 'Supabase', 'Tailwind CSS', 'Framer Motion'],
         },
         {
-            title: 'ClueFind',
-            subtitle: 'Developer portfolio platform',
-            link: 'https://cluefind.software',
-            github: null,
+            title: 'Zentra',
+            subtitle: 'Bitcoin macro intelligence',
+            link: null,
+            github: 'https://github.com/devleo10/zentra',
             description:
-                'Portfolio platform for skills, projects, and achievements: AI profile builder, skill endorsements, GitHub integration, and customizable public profiles. Responsive UI with Next.js, Tailwind, and Radix UI; Prisma and PostgreSQL on the backend; Docker and CI/CD for deployments.',
-            tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Radix UI', 'Prisma', 'PostgreSQL'],
+                'AI-powered Bitcoin macro intelligence system combining live economic, market, and news data with deterministic scoring models to evaluate market conditions in real time.',
+            tags: ['Python', 'AI', 'Market Data', 'Analytics'],
+        },
+        {
+            title: 'Delayt',
+            subtitle: 'API latency visualization',
+            link: null,
+            github: 'https://github.com/devleo10/delayt',
+            description:
+                'MVP tool for visualizing API latency using percentile analysis (p50, p95, p99) instead of averages. Helps teams spot tail latency and regressions that averages hide.',
+            tags: ['TypeScript', 'Node.js', 'PostgreSQL', 'React'],
         },
         {
             title: 'MCP Search Server',
@@ -31,17 +68,8 @@ export default function Projects() {
             link: null,
             github: 'https://github.com/devleo10/mcp-search-server',
             description:
-                'Minimal Model Context Protocol server exposing search_file for Cursor, Claude Desktop, and a small CLI.',
+                'Minimal Model Context Protocol server exposing search_file for Cursor, Claude Desktop, and a small CLI — fast file search inside your codebase from AI tools.',
             tags: ['TypeScript', 'Node.js', 'Express', 'MCP'],
-        },
-        {
-            title: 'Hirebot',
-            subtitle: 'Chrome extension',
-            link: null,
-            github: 'https://github.com/devleo10/hirebot',
-            description:
-                'Chrome extension to save and autofill Q&A for job applications — fewer repetitive forms, faster applications.',
-            tags: ['JavaScript', 'Chrome Extension'],
         },
     ]
 
@@ -52,12 +80,12 @@ export default function Projects() {
             </h2>
 
             <RevealStagger className="flex flex-col gap-12 sm:gap-14" stagger={0.06}>
-                {projects.map((project, idx) => (
+                {projects.map((project) => (
                     <RevealItem key={project.title}>
                         <article className="border-l-2 border-foreground/25 pl-5 transition-colors hover:border-foreground/45 dark:border-white/40 dark:hover:border-white/70">
                             <div className="flex items-start justify-between gap-4">
                                 <div className="flex min-w-0 items-start gap-2.5">
-                                    {idx === 0 && (
+                                    {project.featured && (
                                         <span
                                             className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.45)]"
                                             aria-hidden

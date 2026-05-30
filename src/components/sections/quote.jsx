@@ -17,20 +17,17 @@ export default function Quote() {
         hasFetched.current = true;
 
         fetch('/api/quote')
-            .then(res => {
-                if (!res.ok) throw new Error('API unavailable');
-                return res.json();
-            })
-            .then(data => {
-                if (data && data.quote) {
+            .then((res) => res.json())
+            .then((data) => {
+                if (data?.quote) {
                     setQuote({
                         text: data.quote,
-                        author: data.author
+                        author: data.author ?? 'Unknown',
                     });
                 }
             })
-            .catch(err => {
-                console.error("Error fetching quote:", err)
+            .catch(() => {
+                // Keep the default quote on failure
             });
     }, []);
 
