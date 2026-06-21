@@ -5,6 +5,7 @@ import Projects from '@/components/sections/projects'
 import Contact from '@/components/sections/contact'
 import Quote from '@/components/sections/quote'
 import Activity from '@/components/sections/activity'
+import Tweets from '@/components/sections/tweets'
 import { Reveal } from '@/components/reveal'
 
 export default function Index() {
@@ -13,6 +14,9 @@ export default function Index() {
       <Hero />
       <Reveal delay={0.04}>
         <Activity />
+      </Reveal>
+      <Reveal delay={0.05}>
+        <Tweets />
       </Reveal>
       <Reveal delay={0.06}>
         <Experience />

@@ -63,6 +63,15 @@ export default function Projects() {
             tags: ['TypeScript', 'Node.js', 'PostgreSQL', 'React'],
         },
         {
+            title: 'Goalio',
+            subtitle: 'World Cup calendar sync',
+            link: 'https://goalio-seven.vercel.app',
+            github: 'https://github.com/devleo10/goalio',
+            description:
+                'Sync FIFA World Cup 2026 fixtures to Google Calendar with kickoff reminders, live result updates, and automatic knockout-stage tracking as teams advance. Follow specific teams or the full tournament; events update in place when matches finish.',
+            tags: ['Next.js', 'TypeScript', 'Supabase', 'Google Calendar API', 'Trigger.dev'],
+        },
+        {
             title: 'MCP Search Server',
             subtitle: 'Model Context Protocol',
             link: null,
