@@ -8,6 +8,15 @@ import { RevealStagger, RevealItem } from '@/components/reveal'
 export default function Projects() {
     const projects = [
         {
+            title: 'Goalio',
+            subtitle: 'World Cup calendar sync',
+            link: 'https://goalio-seven.vercel.app',
+            github: 'https://github.com/devleo10/goalio',
+            description:
+                'Sync FIFA World Cup 2026 fixtures to Google Calendar with kickoff reminders, live result updates, and automatic knockout-stage tracking as teams advance. Follow specific teams or the full tournament; events update in place when matches finish.',
+            tags: ['Next.js', 'TypeScript', 'Supabase', 'Google Calendar API', 'Trigger.dev'],
+        },
+        {
             title: 'L-Mic',
             subtitle: 'Browser mic quality tester',
             link: 'https://lmic.tech',
@@ -16,6 +25,24 @@ export default function Projects() {
             description:
                 'Lightweight web app to test microphone quality before meetings — real-time visualizer, input quality meter, and device switcher. No signup or install; open and talk. Built over a weekend with the Web Audio API.',
             tags: ['TypeScript', 'Web Audio API', 'Vercel'],
+        },
+        {
+            title: 'Zentra',
+            subtitle: 'Bitcoin macro intelligence',
+            link: null,
+            github: 'https://github.com/devleo10/zentra',
+            description:
+                'AI-powered Bitcoin macro intelligence system combining live economic, market, and news data with deterministic scoring models to evaluate market conditions in real time.',
+            tags: ['Python', 'AI', 'Market Data', 'Analytics'],
+        },
+        {
+            title: 'Delayt',
+            subtitle: 'API latency visualization',
+            link: null,
+            github: 'https://github.com/devleo10/delayt',
+            description:
+                'MVP tool for visualizing API latency using percentile analysis (p50, p95, p99) instead of averages. Helps teams spot tail latency and regressions that averages hide.',
+            tags: ['TypeScript', 'Node.js', 'PostgreSQL', 'React'],
         },
         {
             title: 'MindGrid',
@@ -43,33 +70,6 @@ export default function Projects() {
             description:
                 'Link-in-bio SaaS with personalized pages, link management, and real-time analytics dashboards. Custom short codes and slugs, QR generation with expiration, and analytics (device, browser, geolocation, profile views) stored securely. Supabase backend with RLS for scalable data access.',
             tags: ['React', 'Supabase', 'Tailwind CSS', 'Framer Motion'],
-        },
-        {
-            title: 'Zentra',
-            subtitle: 'Bitcoin macro intelligence',
-            link: null,
-            github: 'https://github.com/devleo10/zentra',
-            description:
-                'AI-powered Bitcoin macro intelligence system combining live economic, market, and news data with deterministic scoring models to evaluate market conditions in real time.',
-            tags: ['Python', 'AI', 'Market Data', 'Analytics'],
-        },
-        {
-            title: 'Delayt',
-            subtitle: 'API latency visualization',
-            link: null,
-            github: 'https://github.com/devleo10/delayt',
-            description:
-                'MVP tool for visualizing API latency using percentile analysis (p50, p95, p99) instead of averages. Helps teams spot tail latency and regressions that averages hide.',
-            tags: ['TypeScript', 'Node.js', 'PostgreSQL', 'React'],
-        },
-        {
-            title: 'Goalio',
-            subtitle: 'World Cup calendar sync',
-            link: 'https://goalio-seven.vercel.app',
-            github: 'https://github.com/devleo10/goalio',
-            description:
-                'Sync FIFA World Cup 2026 fixtures to Google Calendar with kickoff reminders, live result updates, and automatic knockout-stage tracking as teams advance. Follow specific teams or the full tournament; events update in place when matches finish.',
-            tags: ['Next.js', 'TypeScript', 'Supabase', 'Google Calendar API', 'Trigger.dev'],
         },
         {
             title: 'MCP Search Server',
